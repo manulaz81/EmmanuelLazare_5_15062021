@@ -1,0 +1,13 @@
+@import "layout/header.scss";
+@import "scss/layout/footer.scss";
+@import "./utils/variables.scss";
+@import "./utils/mixins.scss";
+@import "./utils/_fonctions.scss";
+@import "./base/_fonts.scss";
+
+header{
+    background-color: aqua;
+}
+body{
+    background-color: blue;
+}

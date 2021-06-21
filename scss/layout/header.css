@@ -1,0 +1,20 @@
+header {
+  width: 50%;
+  background-color: aqua;
+  margin-bottom: 20px;
+  margin: auto;
+  text-align: center;
+}
+
+.logo {
+  width: 30%;
+}
+
+.logo__image {
+  width: 100%;
+}
+
+.border-red {
+  border: red 1px solid;
+}
+/*# sourceMappingURL=header.css.map */
