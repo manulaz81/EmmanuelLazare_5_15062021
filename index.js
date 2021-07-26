@@ -49,17 +49,9 @@ fetch("http://localhost:3000/api/cameras")
 
             // récuperation  de la description de la camera
             let descripCam = document.createElement("div");
-            descripCam.innerHTML="Description : " + " " +  data[i].description;
-            
+            descripCam.innerHTML="Description : " + " " +  data[i].description;            
             containercarte.appendChild(descripCam);
             console.log(descripCam);
-
-            //récuperation des types de lentilles de la camera
-            // let lenseCam = document.createElement("div");
-            // lenseCam.innerHTML="Lenses : " + " " +  data[i].lenses
-            // containercarte.appendChild(lenseCam);
-            // console.log(lenseCam);
-            //récuperation du prix de la camera
 
             let priceCam = document.createElement("div");
             priceCam.innerHTML="Prix : " + " " +  data[i].price + " " +"€";
@@ -68,13 +60,7 @@ fetch("http://localhost:3000/api/cameras")
             containercarte.appendChild(priceCam);
            
             console.log(priceCam);
-
-            // inserer un lien sur une page produit pour chaque caméra 
-
-          
-
-
-            
+ 
             }
          
     });

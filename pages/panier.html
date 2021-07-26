@@ -5,29 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/style.css">
-    <link rel="stylesheet" href="/scss/style.scss">
     <link rel="stylesheet" href="/index.js">  
+
     <script src="https://kit.fontawesome.com/b99458d354.js" crossorigin="anonymous"></script>
     <title>Orinico</title>
 </head>
 <body >
-    <header >
-        <div class="logo">
-            <img src="/images/logo.png" class="logo__image "><img>           
-        </div>
-        <div class= "title">Orinoco
-        </div>
-        <nav>          
-            <a href="/index.html" class="panier">Accueil
-            </a>  
-        </nav> 
+    <header>
+        <div class="titre">Orinico, site spécialisé de vente de caméra</div>
+        <nav class="panier">
+            <a  class="panierText"href="panier.html"><i class="fas fa-shopping-cart caddie"></i>Panier</a> 
+        </nav>
     </header>
-    <section class="article">
-        <h1 class="titre">
-            Orinoco, le specialiste des ventes en ligne de caméra.
-        </h1>
-        <div class="blocphotocamera1">
-            <a href="pages/camera1.html">
+    <section class="article">        
+        <div id="blocphotocamera">
+
+          Votre commande
+            <!-- <a href="pages/camera1.html">
                 <figure class="cameraone">
                     <img src="/images/vcam_1.jpg" alt="camera1" class="camera__image">
                     <div class="descriptioncamera">                
@@ -37,7 +31,7 @@
                         </figcaption>   
                     </div>
                 </figure>
-            </a>      
+            </a>       -->
             <form action="" method="get" class="formulaire">
                 <div class="form">
                   <label for="name">Enter your name: </label>
@@ -55,24 +49,16 @@
                   <input type="submit" value="Soumettre votre commande">
                 </div>
               </form>
-
-    <footer>
-        <div class="footer__apropos">
-            <a href="https://www.google.com">
-                A Propos
-            </a>
-        </div>
-        <adress class="footer__apropos">
-            <a href="mailto:contact@orinoco.com">
-                Contact
-            </a>
-        </adress>
-        <div class="footer__apropos">
-            <a href="https://www.google.com">
-                Plan du site
-            </a>
-        </div>
-    </footer>   
-
+              <footer>
+                <div class="contact">                          
+                    <a href = "https://www.Twitter.com/"><i class="fab fa-twitter-square icone"></i>Twitter</a>
+                    <a href = "https://facebook.com"><i class="fab fa-facebook-square icone"></i>Facebook</a>
+                    <a href = "https://instagram.com"><i class="fab fa-instagram-square icone"></i>Instagram</a>
+                </div>
+            </footer>        
+<!-- 
+            <script src ="product.js"></script> -->
+            <!-- <script src ="index.js"></script> -->
+            <script src ="panier.js"></script>
 </body>
 </html>
