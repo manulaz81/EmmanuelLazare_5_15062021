@@ -5,7 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/style.css">
-    <link rel="stylesheet" href="/index.js">  
+    <link rel="stylesheet" href="/index.js">
+    <link rel="stylesheet" href="/product.html">
+    <link rel="stylesheet" href="panier.js">
 
     <script src="https://kit.fontawesome.com/b99458d354.js" crossorigin="anonymous"></script>
     <title>Orinico</title>
@@ -20,35 +22,31 @@
     <section class="article">        
         <div id="blocphotocamera">
 
-          Votre commande
-            <!-- <a href="pages/camera1.html">
-                <figure class="cameraone">
-                    <img src="/images/vcam_1.jpg" alt="camera1" class="camera__image">
-                    <div class="descriptioncamera">                
-                        <figcaption >
-                        <p>camera 5</p>
-                        <p>Prix :</p>
-                        </figcaption>   
-                    </div>
-                </figure>
-            </a>       -->
+       
+           <div id="commande">
+
+
+
+
+           </div>
             <form action="" method="get" class="formulaire">
                 <div class="form">
                   <label for="name">Enter your name: </label>
-                  <input type="text" name="name" id="name" required>
+                  <input type="text" name="name" id="prenom" required maxlength="20">
+                  <span id="prenom_manquant"></span>
                 </div>
                 <div class="form">
                     <label for="phone">Enter your phone:</label>
                     <input type="text" name="phone" id="phone" required>
-                  </div>
+                </div>
                 <div class="form">
                   <label for="email">Enter your email: </label>
                   <input type="email" name="email" id="email" required>
                 </div>
                 <div class="form__submit">
-                  <input type="submit" value="Soumettre votre commande">
+                  <input type="submit" value="Soumettre votre commande" id='bouton_envoi'>
                 </div>
-              </form>
+            </form>
               <footer>
                 <div class="contact">                          
                     <a href = "https://www.Twitter.com/"><i class="fab fa-twitter-square icone"></i>Twitter</a>
@@ -60,5 +58,6 @@
             <script src ="product.js"></script> -->
             <!-- <script src ="index.js"></script> -->
             <script src ="panier.js"></script>
+            <script src ="product.js"></script>
 </body>
 </html>

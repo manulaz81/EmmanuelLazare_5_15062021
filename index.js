@@ -62,12 +62,19 @@ fetch("http://localhost:3000/api/cameras")
             console.log(priceCam);
  
             }
-         
-    });
+            
+        });
+        
+        
+   var expr = document.querySelector('p');
+   var r1 = /vous/;
+   var r2 = /vous/g;
 
-    
+   var res1 = expr.textContent.replace(r1,'moi');
+   var res2 = expr.textContent.replace(r2, 'moi');
 
+   var resultat =  document.getElementById('reg');
+resultat.innerHTML = 'resultat match() sur regex 1 : ' + res1 +
+'<br> resultat match() sur regex 2 : ' + res2;
 
- 
-
-
+  

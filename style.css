@@ -1,7 +1,7 @@
 body{
     width: 90%;
     margin:auto;
-    background :linear-gradient(to top, grey 15%, rgb(60, 60, 139) );
+    
 }
 
 header{
@@ -11,7 +11,7 @@ header{
     margin: auto;
     margin-top: 20px;
     margin-bottom: 30px;  
-    color : white;  
+    color : black;  
 }
 
 .panier{
@@ -22,7 +22,7 @@ header{
 }
 .panierText{
     text-decoration: none;
-    color: white;
+    color: black;
     margin-left: 10px;
 }
 .caddie{
