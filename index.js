@@ -3,6 +3,8 @@ let containerCam = document.getElementById("containerCam")
 
 console.log(containerCam)
 
+let boutonPanier=  document.getElementById("boutonPanier")
+
 
 
 fetch("http://localhost:3000/api/cameras")
@@ -16,8 +18,7 @@ fetch("http://localhost:3000/api/cameras")
              let containercarte = document.createElement("a","div");
              containercarte.style.border = "solid 6px black";
              containercarte.style.borderRadius = "20px";
-             containercarte.style.boxShadow = "3px 3px 3px 3px";
-             containercarte.style.height = "360px"; 
+             containercarte.style.height = "290px"; 
              containercarte.style.width = "25%";             
              containercarte.style.margin = "auto";
              containercarte.style.marginTop = "20px";
@@ -48,10 +49,10 @@ fetch("http://localhost:3000/api/cameras")
             console.log(nomCam);            
 
             // récuperation  de la description de la camera
-            let descripCam = document.createElement("div");
-            descripCam.innerHTML="Description : " + " " +  data[i].description;            
-            containercarte.appendChild(descripCam);
-            console.log(descripCam);
+            // let descripCam = document.createElement("div");
+            // descripCam.innerHTML="Description : " + " " +  data[i].description;            
+            // containercarte.appendChild(descripCam);
+            // console.log(descripCam);
 
             let priceCam = document.createElement("div");
             priceCam.innerHTML="Prix : " + " " +  data[i].price + " " +"€";
@@ -64,17 +65,5 @@ fetch("http://localhost:3000/api/cameras")
             }
             
         });
-        
-        
-   var expr = document.querySelector('p');
-   var r1 = /vous/;
-   var r2 = /vous/g;
-
-   var res1 = expr.textContent.replace(r1,'moi');
-   var res2 = expr.textContent.replace(r2, 'moi');
-
-   var resultat =  document.getElementById('reg');
-resultat.innerHTML = 'resultat match() sur regex 1 : ' + res1 +
-'<br> resultat match() sur regex 2 : ' + res2;
-
+    
   
