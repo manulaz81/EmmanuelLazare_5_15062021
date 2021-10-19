@@ -16,20 +16,32 @@
     <header>
         <div class="titre">Orinico, site spécialisé de vente de caméra</div>
         <nav class="panier">
-            <a  class="panierText"href="panier.html"><i class="fas fa-shopping-cart caddie"></i>Panier</a> 
+            <a  class="panierText"href="/index.html">Menu</a> 
         </nav>
     </header>
-    <section class="article">        
-        <div id="blocphotocamera">
 
-       
-           <div id="commande">
-
-
-
-
-           </div>
-            <form action="" method="get" class="formulaire">
+    
+    <section class="article">     
+      
+      <div id ="gridPanier">          
+        <div id="containerProduitPanier">
+          <h1> Les produits sélectionnés</h1>
+          <div class="containerRecap">
+            <div> quantité 1 - nom produit</div>
+            <div> 190 euros supprimer article</div>
+          </div>
+          <div class = montantTotal>
+            <div>Montant total 190€</div>
+            <div>Vider le panier</div>
+          </div>
+        </div>
+        
+      </div> 
+        <div id="blocphotocamera">      
+          <div id="commande">
+          </div>
+        
+        <form action="" method="get" class="formulaire">
                 <div class="form">
                   <label for="name">Enter your name: </label>
                   <input type="text" name="name" id="prenom" required maxlength="20">

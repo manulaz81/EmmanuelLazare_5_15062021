@@ -20,20 +20,7 @@ fetch('http://localhost:3000/api/cameras/'+ id )
 .then((res) => res.json())
 .then((data) => {
       {
-        // // container de chaque camera
-        //  let containercarte = document.createElement("div");
-        //  containercarte.style.border = "solid 6px black";
-        //  containercarte.style.borderRadius = "20px";
-        //  containercarte.style.boxShadow = "3px 3px 3px 3px";
-        //  containercarte.style.height = "460px"; 
-        //  containercarte.style.width = "35%";             
-        //  containercarte.style.margin = "auto";
-        //  containercarte.style.marginTop = "20px";
-        //  containercarte.style.textDecoration = "none";
-        //  containercarte.style.marginBottom = "20px";
-        //  containercarte.style.textAlign = "center";
-        //  containerProduct.appendChild(containercarte);   
-    
+            
          // recuperation de l'image
         let imageCam = document.createElement("img");   
         imageCam.classList.add ("photo");
@@ -117,17 +104,18 @@ fetch('http://localhost:3000/api/cameras/'+ id )
         let bouton = document.createElement("button");
         let validation = document.getElementById("validation");
         bouton.classList.add("boutonenv");
-        bouton.style.margin = "20px";
+        bouton.style.marginBottom = "20px";
         bouton.style.backgroundColor = "#0365";
         bouton.type = "submit";
         bouton.name = "btnenvoye";
         bouton.innerHTML = "Ajouter au panier";
         validation.appendChild(bouton);
+        console.log(validation);
 
         // pour ajouter au panier
          
-         bouton.addEventListener('click',changeTexte);
-         function changeTexte(){
+        bouton.addEventListener('click',changeTexte);
+        function changeTexte(){
              
              if (testnom.value==="choisir options")
              alert ("vous devez obligatoirement choisir une option");    
@@ -141,13 +129,14 @@ fetch('http://localhost:3000/api/cameras/'+ id )
          
          // création d'une variable qui contient les valeurs du produit selectionné
             let produitSelect = {
+            photob :  data.imageUrl,
             nom : data.name ,
             option : testnom.value,
             quantite : quantiteCam.value,
             prix : data.price ,
             prixTotal : data.price *quantiteCam.value ,
             }
-                 console.log(produitSelect);
+            console.log(produitSelect);
      
          //-------------------Le localStorage---------------//
          // stocker la recuperation des valeurs du formulaire dans le local storage 

@@ -1,7 +1,60 @@
 /*recapitulatif commande*/
 
 let commande = document.getElementById("commande");
-commande.innerHTML = "vous avez ajouter" + "\n " ;
+commande.innerHTML = "Voici votre commande" + "\n " ;
+
+let produitDansLocalStorage = JSON.parse(localStorage.getItem("produitphoto"));
+ console.log(produitDansLocalStorage);
+
+//affichage des produits du panier--------
+// selection de la class où je vais injecter le code html
+
+const positionElement = document.getElementById("gridPanier");
+console.log(positionElement);
+
+// si le panier est vide : afficher le panier vide
+
+if(produitDansLocalStorage === null){
+    const panierVide = `
+    <div class="lepaniervide">
+        <div>Le panier est vide</div>
+    </div>
+    `
+positionElement.innerHTML = panierVide;
+
+}
+else {
+    // si le panier n'est pas vide : afficher les produits dans le locakStorage
+    let structureProduitPanier =[];
+    for (k = 0; k < produitDansLocalStorage.length; k++){
+        structureProduitPanier = 
+        structureProduitPanier + `
+        
+       <div class ="containerecap">
+       <div class="nomPanier" >Camera ${produitDansLocalStorage[k].nom} </div>
+       <div class="optionPanier">option ${produitDansLocalStorage[k].option}</div>
+       <div class ="prixPanier">Prix ${produitDansLocalStorage[k].prix/100 + " " + "€"}</div>
+       <div>
+            <button>+</button>
+            <button class="quantitePanier">${produitDansLocalStorage[k].quantite}</button>
+            <button>-</button>   
+       </div>    
+       <div class="prixTotalPanier"> prix total ${produitDansLocalStorage[k]. prixTotal/100 + " "+ "€"}</div>
+       <button class="supprimerArticlePanier">supprimer article</button> 
+       </div>         
+       
+       
+        `    
+    }
+    if (k == produitDansLocalStorage.length){
+        //injection html dsans la page panier
+        positionElement.innerHTML = structureProduitPanier;
+    }
+
+
+}
+
+
 
 
 

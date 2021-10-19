@@ -92,3 +92,78 @@ footer{
     margin-top: 20px;
     text-align: center;
 }
+/***********************page panier*************************/
+#gridPanier{
+    display:  grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    grid-row-gap : 1rem;
+    grid-template-areas: 
+    "header"
+    "containerProduitPanier"
+    "footer";
+}
+#containerProduitPanier{
+    grid-area: "containerProduitPanier";
+    display :  flex;
+    flex-direction: column;
+    min-width: 80vh;
+    justify-content: center;
+    border : solid 2px black;
+}
+.containerRecap{
+    background-color: beige;
+    display :  flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-grow: 1;
+    flex-basis: 3rem;
+    flex-shrink: 1;
+}
+
+.montantTotal{
+    background-color: blueviolet;
+    display :  flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-grow: 1;
+    flex-basis: 3rem;
+    flex-shrink: 1;
+}
+
+.lepaniervide{
+    background-color: #4784 ;
+}
+
+.photoPanier{
+    width: 100%;
+    height: 30px;
+}
+.containerecap{
+    display: flex;
+    border : solid 1px black;
+    margin: 10px;
+    padding: 10px;
+    justify-content: space-between;   
+    align-items: center; 
+}
+.optionPanier{
+    width :25%;
+    text-align: left;
+}
+.nomPanier{
+    width : 20%;
+    text-align: left;
+}
+.prixPanier{
+    width : 15%;
+    text-align: left;
+}
+.quantitePanier{
+    text-align: left;
+    height: 30px;
+    
+}
+
+
+/*------------------------- panier html fin-----------------*/
