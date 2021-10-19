@@ -48,11 +48,6 @@ fetch("http://localhost:3000/api/cameras")
             console.log(containerCam)           
             console.log(nomCam);            
 
-            // récuperation  de la description de la camera
-            // let descripCam = document.createElement("div");
-            // descripCam.innerHTML="Description : " + " " +  data[i].description;            
-            // containercarte.appendChild(descripCam);
-            // console.log(descripCam);
 
             let priceCam = document.createElement("div");
             priceCam.innerHTML="Prix : " + " " +  data[i].price + " " +"€";

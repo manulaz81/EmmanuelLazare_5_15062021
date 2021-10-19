@@ -6,6 +6,9 @@ commande.innerHTML = "Voici votre commande" + "\n " ;
 let produitDansLocalStorage = JSON.parse(localStorage.getItem("produitphoto"));
  console.log(produitDansLocalStorage);
 
+
+
+
 //affichage des produits du panier--------
 // selection de la class où je vais injecter le code html
 
@@ -30,14 +33,16 @@ else {
         structureProduitPanier = 
         structureProduitPanier + `
         
+        
        <div class ="containerecap">
-       <div class="nomPanier" >Camera ${produitDansLocalStorage[k].nom} </div>
+       <img class="photopanier" src="${produitDansLocalStorage[k].photoPanier}">
+       <div class="nomPanier" >Camera ${produitDansLocalStorage[k].nom} </div>       
        <div class="optionPanier">option ${produitDansLocalStorage[k].option}</div>
        <div class ="prixPanier">Prix ${produitDansLocalStorage[k].prix/100 + " " + "€"}</div>
        <div>
-            <button>+</button>
+            <button>-</button>
             <button class="quantitePanier">${produitDansLocalStorage[k].quantite}</button>
-            <button>-</button>   
+            <button>+</button>   
        </div>    
        <div class="prixTotalPanier"> prix total ${produitDansLocalStorage[k]. prixTotal/100 + " "+ "€"}</div>
        <button class="supprimerArticlePanier">supprimer article</button> 

@@ -153,6 +153,7 @@ footer{
 }
 .nomPanier{
     width : 20%;
+    height : 30px;
     text-align: left;
 }
 .prixPanier{
@@ -163,6 +164,11 @@ footer{
     text-align: left;
     height: 30px;
     
+}
+.photopanier{
+     width : 20%;
+    height : 80px;
+    text-align: left;
 }
 
 

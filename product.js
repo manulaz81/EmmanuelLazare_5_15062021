@@ -129,7 +129,7 @@ fetch('http://localhost:3000/api/cameras/'+ id )
          
          // création d'une variable qui contient les valeurs du produit selectionné
             let produitSelect = {
-            photob :  data.imageUrl,
+            photoPanier : data.imageUrl,
             nom : data.name ,
             option : testnom.value,
             quantite : quantiteCam.value,
