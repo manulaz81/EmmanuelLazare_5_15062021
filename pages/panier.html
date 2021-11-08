@@ -5,9 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/style.css">
-    <link rel="stylesheet" href="/index.js">
-    <link rel="stylesheet" href="/product.html">
-    <link rel="stylesheet" href="panier.js">
 
     <script src="https://kit.fontawesome.com/b99458d354.js" crossorigin="anonymous"></script>
     <title>Orinico</title>
@@ -21,45 +18,80 @@
     </header>
 
     
-    <section class="article">   
-      <img class="photoPan">  
-      
-      <div id ="gridPanier">          
-        <div id="containerProduitPanier">
-          <h1> Les produits sélectionnés</h1>
-          <div class="containerRecap">
-            <div> quantité 1 - nom produit</div>
-            <div> 190 euros supprimer article</div>
-          </div>
-          <div class = montantTotal>
-            <div>Montant total 190€</div>
-            <div>Vider le panier</div>
-          </div>
-        </div>
-        
-      </div> 
-        <div id="blocphotocamera">      
-          <div id="commande">
-          </div>
-        
+    <section class="article">  
+      <div id="commande"></div>
+      <div id="containerRecapEtTotal">
+        <div id="containerRecap1">
+        </div>         
+      </div>
+     </section>
+     
+     <!--------------------------------formulaire  ---------------------------->
         <form action="" method="get" class="formulaire">
+          <div class="pourvalid"> Pour valider votre commande, merci de remplir le champs formulaire ci dessous et appuyer sur le bouton "Soumettre votre commande":
+          </div>
+          <div class="form">  
+            <div class=formulaire2>    
+              <div class="formulaire1">                
                 <div class="form">
-                  <label for="name">Enter your name: </label>
-                  <input type="text" name="name" id="prenom" required maxlength="20">
-                  <span id="prenom_manquant"></span>
+                  <label for="name" class="cellule">Nom* : 
+                  </label>                   
+                  <div class="inputErreur">           
+                    <input type="text" name="name" id="nom" required maxlength="20" placeholder="Votre nom de famille"class="inputvalidation">
+                    <span id="nomManquant"></span> 
+                  </div>
+                </div>    
+                <div class="form">
+                  <label for="name" class="cellule">Prénom* : 
+                  </label>                   
+                  <div class="inputErreur">           
+                    <input type="text" name="name" id="prenom" required maxlength="20" placeholder="Votre nom de famille"class="inputvalidation" >
+                    <span id="prenomManquant"></span> 
+                  </div>
+                </div>    
+                <div class="form">
+                  <label for="name" class="cellule">Adresse* : 
+                  </label>                   
+                  <div class="inputErreur">           
+                    <input type="text" name="adress" id="adresse" required maxlength="120" placeholder="Votre adresse"class="inputvalidation">
+                    <span id="adresseManquant"> </span> 
+                  </div>
+                </div>    
+                <div class="form">
+                  <label for="name" class="cellule">Ville* : 
+                  </label>                   
+                  <div class="inputErreur">           
+                    <input type="text" name="name" id="ville" required maxlength="130" placeholder="Votre ville"class="inputvalidation">
+                    <span id="villeManquant"></span> 
+                  </div>
+                </div>    
+                <div class="form">
+                  <div class="cellule">
+                    <label for="phone">Téléphone*:</label>
+                  </div>
+                  <div class="inputErreur"> 
+                    <input type="text" name="phone" id="phone" required placeholder="votre numéro de téléphone"class="inputvalidation" pattern="[0-9]{10}"required >
+                    <span id="phoneManquant"></span> 
+                  </div>
                 </div>
                 <div class="form">
-                    <label for="phone">Enter your phone:</label>
-                    <input type="text" name="phone" id="phone" required>
+                   <div class="cellule">
+                    <label for="email"class="cellule">E-mail* : </label>
+                  </div>
+                    <div class="inputErreur"> 
+                     <input type="email" name="email" id="email" required placeholder="ex: pierrebertrand@gmail.fr"class="inputvalidation" >
+                     <span id="mailManquant"></span> 
+                  </div>
                 </div>
-                <div class="form">
-                  <label for="email">Enter your email: </label>
-                  <input type="email" name="email" id="email" required>
-                </div>
+                </div> 
                 <div class="form__submit">
-                  <input type="submit" value="Soumettre votre commande" id='bouton_envoi'>
+                <input type="submit" value="Soumettre votre commande" id='bouton_envoi' class="inputvalidation">
                 </div>
-            </form>
+            </div>  
+          </div>
+            <div class="champsobli">* Champs obligatoires
+            </div>
+        </form>
               <footer>
                 <div class="contact">                          
                     <a href = "https://www.Twitter.com/"><i class="fab fa-twitter-square icone"></i>Twitter</a>
@@ -67,10 +99,8 @@
                     <a href = "https://instagram.com"><i class="fab fa-instagram-square icone"></i>Instagram</a>
                 </div>
             </footer>        
-<!-- 
-            <script src ="product.js"></script> -->
-            <!-- <script src ="index.js"></script> -->
+
             <script src ="panier.js"></script>
-            <script src ="/product.js"></script>
+           
 </body>
 </html>

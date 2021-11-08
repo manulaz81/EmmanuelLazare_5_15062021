@@ -1,31 +1,21 @@
-
-let containerCam = document.getElementById("containerCam")
-
-console.log(containerCam)
-
-let boutonPanier=  document.getElementById("boutonPanier")
-
-
+let boutonPanier=  document.getElementById("boutonPanier");
+let containerPhoto = document.getElementById("Photo");
+let containerCam = document.getElementById("containerCam2");  
 
 fetch("http://localhost:3000/api/cameras")
-    .then((res) => res.json())
-    .then((data) => {
-        console.log(data)       
-       
-        for(let i in data){
 
+.then((res) => res.json())
+
+.then((data) => { 
+    console.log(data);    
+       
+        for(let i in data){           
+                        
             // container de chaque camera
-             let containercarte = document.createElement("a","div");
-             containercarte.style.border = "solid 6px black";
-             containercarte.style.borderRadius = "20px";
-             containercarte.style.height = "290px"; 
-             containercarte.style.width = "25%";             
-             containercarte.style.margin = "auto";
-             containercarte.style.marginTop = "20px";
+            let containercarte = document.createElement("a","div");
+            containercarte.id = "lienProduit";        
              containercarte.style.textDecoration = "none";
-             containercarte.href = "product.html?id_cameras"+data[i]._id;
-             containercarte.style.marginBottom = "20px";
-             containercarte.style.textAlign = "center";
+             containercarte.href = "product.html?id_cameras"+data[i]._id;            
              containerCam.appendChild(containercarte);   
         
              // recuperation de l'image
@@ -36,29 +26,24 @@ fetch("http://localhost:3000/api/cameras")
              imageCam.style.marginBottom = "10px";
              imageCam.style.borderRadius = "15px 15px 0 0";
              containercarte.appendChild(imageCam);        
-            console.log(imageCam.src);
-           
+                       
             //recuperation du nom de caméra
             let nomCam = document.createElement("div");
-            nomCam.innerHTML = "Marque : " + " " +  data[i].name;
+            nomCam.innerHTML = "Caméra : " + " " +  data[i].name;
             nomCam.style.marginBottom = "10px";
             nomCam.style.fontSize = "1.1rem";
             nomCam.style.fontWeight = "600";
-            containercarte.appendChild(nomCam);
-            console.log(containerCam)           
-            console.log(nomCam);            
-
+            containercarte.appendChild(nomCam);                   
 
             let priceCam = document.createElement("div");
             priceCam.innerHTML="Prix : " + " " +  data[i].price + " " +"€";
             priceCam.style.fontWeight = "600";
             priceCam.style.marginTop = " 15px";
-            containercarte.appendChild(priceCam);
-           
-            console.log(priceCam);
- 
+            containercarte.appendChild(priceCam);            
             }
             
-        });
+        })
+ .catch(e => console.log(e));       
+        
+        
     
-  
