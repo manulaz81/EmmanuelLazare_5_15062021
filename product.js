@@ -121,7 +121,7 @@ fetch('http://localhost:3000/api/cameras/'+ id )
               option : testnom.value,
               quantite : quantiteCam.value,
               prix : data.price ,
-              prixTotal : data.price *quantiteCam.value ,
+              prixTotal : data.price *quantiteCam.value/100 ,
               };
      
         //-------------------Le localStorage---------------//
@@ -135,7 +135,7 @@ fetch('http://localhost:3000/api/cameras/'+ id )
         
         // création d'une variable qui permet de dire que l'objet a été ajouté
           const popupConfirmation = ()=>{
-          if(window.confirm("la caméra"+" "+ (data.name) + " "+ 'a bien été ajouté dans votre panier')){
+          if(alert("la caméra"+" "+ (data.name) + " "+ 'a bien été ajouté dans votre panier')){
               ;
           }
           else{
@@ -149,6 +149,8 @@ fetch('http://localhost:3000/api/cameras/'+ id )
               console.log(produitDansLocalStorage);
               popupConfirmation();
           }
+
+          
         // s il n'y a pas de produit enregistré dans le local storage
                 
                 else {
@@ -156,15 +158,15 @@ fetch('http://localhost:3000/api/cameras/'+ id )
                     produitDansLocalStorage.push(produitSelect);
                   // création de la clé produit
                   localStorage.setItem("produitphoto", JSON.stringify(produitDansLocalStorage));
-                  console.log(produitDansLocalStorage);
                   popupConfirmation()                    
-                  };
-                  
-                  
-
-          } 
-        } 
-      }             
+                  console.log(produitDansLocalStorage);
+                };
+                
+                
+                
+              } 
+            } 
+          }             
 })
 
 .catch(error => console.log ( error))

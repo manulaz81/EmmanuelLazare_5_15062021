@@ -22,6 +22,7 @@ else {
    
     for (let k in produitDansLocalStorage2){ 
         
+        
         let commande2 = document.getElementById("commande");
         commande2.innerHTML = "Récapitulatif de votre commande" + "\n " ;  
 
@@ -38,8 +39,7 @@ else {
         photoCameraduPanier.classList = "photoPanier";
         photoCameraduPanier.style.width = "90px";        
         photoCameraduPanier.src = produitDansLocalStorage2[k].photoPanier;
-        containerRecap.appendChild(photoCameraduPanier);
-        console.log(produitDansLocalStorage2[k]);    
+        containerRecap.appendChild(photoCameraduPanier); 
         
         // création de la div Nom de la caméra
         let nomCameraDuPanier = document.createElement("div");
@@ -60,37 +60,62 @@ else {
         
         //création de l'input
         let inputQuantite = document.createElement("input");
-        inputQuantite.id ="inp";
+        inputQuantite.classList ="inp";
         inputQuantite.type = "number";
         inputQuantite.step = "1";       
         inputQuantite.value = produitDansLocalStorage2[k].quantite  ;        
         inputQuantite.min = "1";
         inputQuantite.max = 10 ;
         inputQuantite.innerHTML=  produitDansLocalStorage2[k].quantite;
-        divquantite.appendChild(inputQuantite);     
+        divquantite.appendChild(inputQuantite); 
+        
+        
         
         // création de la div prix total payé
         let montantTotalDuPanier =  document.createElement("div"); 
-        montantTotalDuPanier.id = "montantApayer";               
-        montantTotalDuPanier.innerHTML = produitDansLocalStorage2[k].prix/100 ;
+        montantTotalDuPanier.classList = "montantApayer";               
+        montantTotalDuPanier.innerHTML = produitDansLocalStorage2[k].prixTotal+ " "+ " €";
+        
         containerRecap.appendChild(montantTotalDuPanier);  
-        console.log(montantTotalDuPanier.textContent);      
-            
-        // fonction crée pour modifié le montant total en fonction de la saisie sur input
-        inputQuantite.addEventListener('change', updateValue);
-        function updateValue(e){
-            montantTotalDuPanier.textContent = e.target.value * (produitDansLocalStorage2[k].prix/100) ; 
-        }
-
+        
+       
         // création de la div pour créer un bouton
         let boutonSupprimeDuPanier = document.createElement("button");
         boutonSupprimeDuPanier.classList = "boutonSupprimerArticle";
         boutonSupprimeDuPanier.innerHTML = "supprimer article";
         containerRecap.appendChild(boutonSupprimeDuPanier);    
-        console.log(boutonSupprimeDuPanier);  
-  
-        
     }
+
+    let inputSelection = document.getElementsByClassName("inp");
+    // console.log(inputSelection[0]);
+    // inputSelection[0].addEventListener("change", essai())
+
+    // function essai(){
+    //     let relou = document.getElementsByClassName("montantApayer");
+    //     relou.innerHTML = "bisous";
+    // }
+
+    // console.log(inputSelection);
+    for (let c= 0; c<inputSelection.length; c++){
+        console.log(c);
+        let messageErreur = document.getElementsByClassName("montantApayer");
+        console.log(messageErreur);
+        inputSelection[c].addEventListener("click", (event)=>{
+           messageErreur.textContent= "essaiencore";
+})
+    }
+
+    // function namecall(){
+        
+    //     let doof = document.getElementById("montantApayer");
+        
+    //     doof.innerHTML  = "coucou";
+    // };
+    
+    // inputQuantite.addEventListener("change", namecall);
+    
+   
+    
     //selection de tout les "boutons supprimés"
            
     let boutonSupp= document.querySelectorAll("button");
@@ -98,14 +123,12 @@ else {
     
     // boucle pour récuperer la valeur dans le localstorage
     for (let a= 0; a<produitDansLocalStorage2.length; a++){
-                let supprimeValeurLocalStorage = produitDansLocalStorage2[a];     
+                let supprimeValeurLocalStorage = [produitDansLocalStorage2[a]];     
         console.log(supprimeValeurLocalStorage);
-    }
-    
+        
+    }   
 
-   
-
-    for (let b = 0 ; b <boutonSupp.length; b++){
+    for (let b =0 ; b <boutonSupp.length; b++){
                 boutonSupp[b].addEventListener("click", (event)=>{
                     event.preventDefault();
                 console.log(event);
@@ -113,30 +136,32 @@ else {
              // selection de l'id du produit qui va être supprimer en cliquant sur le bouton
 
              let idSelectSupprime = produitDansLocalStorage2[b].id ;
-             console.log(idSelectSupprime);                 
-
-             
-             //  localStorage.removeItem("produitphoto"[b]);
+             console.log(idSelectSupprime);                
              
              // avec la methode filter je selectionn les element a garder et supprime l'élemnt où le btn suppr a été cliqué
-            //   produitDansLocalStorage2 = produitDansLocalStorage2.filter(el =>el.id !== idSelectSupprime);
+              produitDansLocalStorage2 = produitDansLocalStorage2.filter(el =>el.id !== idSelectSupprime);
             //   console.log(produitDansLocalStorage2);
              
              // envoi la valeur dans le localstorage
-            //   localStorage.setItem("produitphoto",JSON.stringify(produitDansLocalStorage2));
-             
-             
-             
-            })
-            // boutonSupprimeDuPanier.addEventListener("click",yes =>{
-                    
-                //     yes.preventDefault();                 
-                //               
-                //     localStorage.removeItem("produitphoto")[a] ;
-                // });     
-                
-            }
-            // containerRecap.remove();
+              localStorage.setItem("produitphoto",JSON.stringify(produitDansLocalStorage2));            
+              
+              //alerter pour avertir que le produit est enlever du panier
+              alert ( "Le produit a été retiré du panier !");              
+              window.location.href = "/pages/panier.html"  ;              
+            })        
+        }
+        
+        if (produitDansLocalStorage2==0){
+            const panierVide = `
+            <div class="lepaniervide">
+            <div>Votre panier est vide</div>
+            </div>
+            `
+            positionElement.innerHTML = panierVide;
+            // panierVide.remove();
+            containermontantTotalPanier.remove;        
+        }
+
      let containermontantTotalPanier = document.createElement("div");
      containermontantTotalPanier.id ="containerTotalPanier";    
      containerRecapEtTotal.appendChild(containermontantTotalPanier);
@@ -188,6 +213,8 @@ else {
 
     let recupValeur = []; 
     console.log(recupValeur); 
+
+    
     
     // aller chercher les prix dans le panier
     
@@ -199,33 +226,59 @@ else {
         console.log(prixProduitDansPanier);
     }
     // pour additionner le montant du tableau
-    const reducer = (accumulator, currentValue) => accumulator + currentValue;
-   console.log(reducer);
-   const prixTotalpannier = recupValeur.reduce(reducer,0);
-   console.log(prixTotalpannier);
+        const reducer = (accumulator, currentValue) => accumulator + currentValue;   
+        const prixTotalpannier = recupValeur.reduce(reducer,0);
+        console.log(prixTotalpannier);
+        let valeurdef = document.getElementById("montantApayer");
+
+ // fonction crée pour modifié le montant total en fonction de la saisie sur input
+      
+ 
+//  let inputEcoute = document.getElementById("inp");
+//         console.log(inputEcoute.value);  
+        
+//         inputEcoute.addEventListener('change', updateValue)
+    
+//         let montantPanier2 = document.getElementById("montantApayer");
+    
+    
+//         // test pour modifier la valeur dans le localStorage
+//         function updateValue(){
+            
+//             montantPanier2.innerHTML = inputEcoute.value * produitDansLocalStorage2[0].prix ; 
+//             console.log(montantPanier2.innerHTML);
+//             produitDansLocalStorage2[0].quantite = inputEcoute.value;
+//             produitDansLocalStorage2[0].prixTotal = montantPanier2.innerHTML;
+//             console.log(inputEcoute.value);  
+//             localStorage.setItem("produitphoto", JSON.stringify(produitDansLocalStorage2)); 
+                 
+//         }
+        
+//         console.log(produitDansLocalStorage2);
+    
+    
+        
+        
+        
+
 
     let totalProd2 = document.createElement("div");
     totalProd2.id = "totalProd2";
     totalProd.appendChild(totalProd2);
-    totalProd2.innerHTML =  prixTotalpannier + prixLivraison + " "+ " €" ;
-    
+    totalProd2.innerHTML =  prixTotalpannier + prixLivraison  + " "+ " €" ;
+
     let ligneProduit2 = document.createElement("div");
     ligneProduit2.id = "Articlebis2";
     ligneProduit.appendChild(ligneProduit2);
     ligneProduit2.innerHTML =  prixTotalpannier + " "+ "€";
     }
-  
           
 // local storage
  
-   
-    // (localStorage.getItem(commande[i]))
-   
-
 //**************************fin article du panier*****************************/
 
 //**************************gestion du formulaire*****************************/
-
+const formulaireContainer =  document.querySelector("formulaire");
 const validation = document.getElementById('bouton_envoi');
 const nom = document.getElementById('nom');
 const nom_m = document.getElementById('nomManquant');
@@ -271,11 +324,11 @@ function f_valid(e){
         ville_m.textContent = 'Merci de compléter ce champs';
         ville_m.style.color = 'red';
     }
-    if(telephone.validity.valueMissing){
-        e.preventDefault();
-        telephone_m.textContent = 'Merci de compléter ce champs';
-        telephone_m.style.color = 'red';
-    }
+    // if(telephone.validity.valueMissing){
+    //     e.preventDefault();
+    //     telephone_m.textContent = 'Merci de compléter ce champs';
+    //     telephone_m.style.color = 'red';
+    // }
     if(email.validity.valueMissing){
         e.preventDefault();
         email_m.textContent = 'Merci de compléter ce champs';
@@ -286,14 +339,66 @@ function f_valid(e){
         nom_m.textContent = 'Format incorrect';
         nom_m.style.color = 'orange';
     }
-    // else if(tel_r.test(telephone.value)==true){
-    //     e.preventDefault();
-    //     telephone_m.textContent = 'Format incorrect';
-    //     telephone_m.style.color = 'orange';
-    // }
-    
+       
     else{
-        alert("votre commande a bien été transmise,elle porte le n°, un email vient de vous être envoyé à l'adresse mail suivante :  ainsi qu'une confirmation pas sms au numéro suivant: ...")
+
+        let formulaire = [nom.value, prenom.value,adresse.value, ville.value,phone.value,email.value];
+        let valeurTotal = document.getElementById('totalProd2');
+        console.log(valeurTotal.textContent);
+        console.log(formulaire[5]);
+
+
+ // envoie de l'objet vers le serveur
+
+        // let objetResultat = {
+        //     contact : {
+        //         firstName : newClient.formulaire[0],
+        //         lastName : newClient.formulaire[1],
+        //         address : newClient.formulaire[2],
+        //         city : newClient.formulaire[3],
+        //         email : newClient.formulaire[4],
+        //     },
+        //     products : productsId
+        // }
+        // console.log(objetResultat);
+
+
+        const formulaire1 = formulaire;       
+          console.log(formulaire1);
+        
+ fetch('http://localhost:3000/api/cameras/order', {
+    method: 'POST',    
+    headers : {
+        'Accept' : 'application/json',
+        'Content-type' : 'application/json'
+    },
+    body : JSON.stringify(formulaire1)
+})
+
+// pour voir le résultat du serveur dans la console
+
+ .then(function(res){
+     if (res.ok){
+          console.log( response.json())
+        }
+    })
+ .then (function(){
+     document
+        .getElementById('donneeForm')
+        .innerHTML = formulaire; 
+ })      
+    
+ .catch (function(e){
+  alert("probleme de connexion");
+    })
+
+
+
+
+        alert("Bonjour Mr " +formulaire[0] +" " +"votre commande a bien été transmise,elle porte le n°" +" " +"294" +" "+"pour un montant de"+" "+valeurTotal.textContent +" "+ "un email vient de vous être envoyé à l'adresse suivante : " +formulaire[5] + "  ainsi qu'une confirmation pas sms."
+        );
+
+        // localStorage.clear();
     }
 }
 

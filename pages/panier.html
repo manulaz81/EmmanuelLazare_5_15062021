@@ -16,7 +16,6 @@
             <a  class="panierText"href="/index.html">Menu</a> 
         </nav>
     </header>
-
     
     <section class="article">  
       <div id="commande"></div>
@@ -37,7 +36,7 @@
                   <label for="name" class="cellule">Nom* : 
                   </label>                   
                   <div class="inputErreur">           
-                    <input type="text" name="name" id="nom" required maxlength="20" placeholder="Votre nom de famille"class="inputvalidation">
+                    <input type="text" name="name" id="nom" required maxlength="20" placeholder="Votre nom de famille"class="inputvalidation" pattern="^[-'a-zA-ZÀ-ÖØ-öø-ÿ ]{4,28}$">
                     <span id="nomManquant"></span> 
                   </div>
                 </div>    
@@ -45,7 +44,7 @@
                   <label for="name" class="cellule">Prénom* : 
                   </label>                   
                   <div class="inputErreur">           
-                    <input type="text" name="name" id="prenom" required maxlength="20" placeholder="Votre nom de famille"class="inputvalidation" >
+                    <input type="text" name="name" id="prenom" required maxlength="20" placeholder="Votre nom de famille"class="inputvalidation" pattern="^[-'a-zA-ZÀ-ÖØ-öø-ÿ ]{4,28}$">
                     <span id="prenomManquant"></span> 
                   </div>
                 </div>    
@@ -61,7 +60,7 @@
                   <label for="name" class="cellule">Ville* : 
                   </label>                   
                   <div class="inputErreur">           
-                    <input type="text" name="name" id="ville" required maxlength="130" placeholder="Votre ville"class="inputvalidation">
+                    <input type="text" name="name" id="ville" required maxlength="130" placeholder="Votre ville"class="inputvalidation"pattern="^[-'a-zA-ZÀ-ÖØ-öø-ÿ ]{2,30}$" required>
                     <span id="villeManquant"></span> 
                   </div>
                 </div>    
@@ -79,7 +78,7 @@
                     <label for="email"class="cellule">E-mail* : </label>
                   </div>
                     <div class="inputErreur"> 
-                     <input type="email" name="email" id="email" required placeholder="ex: pierrebertrand@gmail.fr"class="inputvalidation" >
+                     <input type="email" name="email" id="email" required placeholder="ex: pierrebertrand@gmail.fr"class="inputvalidation" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
                      <span id="mailManquant"></span> 
                   </div>
                 </div>
@@ -92,6 +91,9 @@
             <div class="champsobli">* Champs obligatoires
             </div>
         </form>
+
+        <div id="donneeForm"></div>
+        
               <footer>
                 <div class="contact">                          
                     <a href = "https://www.Twitter.com/"><i class="fab fa-twitter-square icone"></i>Twitter</a>
