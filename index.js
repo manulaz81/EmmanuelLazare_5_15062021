@@ -36,14 +36,11 @@ fetch("http://localhost:3000/api/cameras")
             containercarte.appendChild(nomCam);                   
 
             let priceCam = document.createElement("div");
-            priceCam.innerHTML="Prix : " + " " +  data[i].price + " " +"€";
+            priceCam.innerHTML="Prix : " + " " +  data[i].price/100 + " " +"€";
             priceCam.style.fontWeight = "600";
             priceCam.style.marginTop = " 15px";
             containercarte.appendChild(priceCam);            
             }
             
         })
- .catch(e => console.log(e));       
-        
-        
-    
+ .catch(e => console.log(e));          

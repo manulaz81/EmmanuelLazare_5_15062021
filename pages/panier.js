@@ -14,18 +14,14 @@ if(produitDansLocalStorage2 === null){
     </div>
     `
 positionElement.innerHTML = panierVide;
-
 }
 
 else { 
     // si le panier n'est pas vide : afficher les produits dans le locakStorage
    
-    for (let k in produitDansLocalStorage2){ 
-        
-        
+    for (let k in produitDansLocalStorage2){   
         let commande2 = document.getElementById("commande");
         commande2.innerHTML = "Récapitulatif de votre commande" + "\n " ;  
-
         let containerRecap27 = document.getElementById("containerRecap1");
 
         //création du container pour les articles
@@ -59,7 +55,7 @@ else {
         containerRecap.appendChild(divquantite);        
         
         //création de l'input
-        let inputQuantite = document.createElement("input");
+        const inputQuantite = document.createElement("input");
         inputQuantite.classList ="inp";
         inputQuantite.type = "number";
         inputQuantite.step = "1";       
@@ -67,17 +63,13 @@ else {
         inputQuantite.min = "1";
         inputQuantite.max = 10 ;
         inputQuantite.innerHTML=  produitDansLocalStorage2[k].quantite;
-        divquantite.appendChild(inputQuantite); 
-        
-        
+        divquantite.appendChild(inputQuantite);       
         
         // création de la div prix total payé
-        let montantTotalDuPanier =  document.createElement("div"); 
+        const montantTotalDuPanier =  document.createElement("div"); 
         montantTotalDuPanier.classList = "montantApayer";               
-        montantTotalDuPanier.innerHTML = produitDansLocalStorage2[k].prixTotal+ " "+ " €";
-        
-        containerRecap.appendChild(montantTotalDuPanier);  
-        
+        montantTotalDuPanier.innerHTML = produitDansLocalStorage2[k].prixTotal+ " "+ " €";        
+        containerRecap.appendChild(montantTotalDuPanier);          
        
         // création de la div pour créer un bouton
         let boutonSupprimeDuPanier = document.createElement("button");
@@ -85,47 +77,13 @@ else {
         boutonSupprimeDuPanier.innerHTML = "supprimer article";
         containerRecap.appendChild(boutonSupprimeDuPanier);    
     }
-
-    let inputSelection = document.getElementsByClassName("inp");
-    // console.log(inputSelection[0]);
-    // inputSelection[0].addEventListener("change", essai())
-
-    // function essai(){
-    //     let relou = document.getElementsByClassName("montantApayer");
-    //     relou.innerHTML = "bisous";
-    // }
-
-    // console.log(inputSelection);
-    for (let c= 0; c<inputSelection.length; c++){
-        console.log(c);
-        let messageErreur = document.getElementsByClassName("montantApayer");
-        console.log(messageErreur);
-        inputSelection[c].addEventListener("click", (event)=>{
-           messageErreur.textContent= "essaiencore";
-})
-    }
-
-    // function namecall(){
-        
-    //     let doof = document.getElementById("montantApayer");
-        
-    //     doof.innerHTML  = "coucou";
-    // };
     
-    // inputQuantite.addEventListener("change", namecall);
-    
-   
-    
-    //selection de tout les "boutons supprimés"
-           
+    //selection de tout les "boutons supprimés"           
     let boutonSupp= document.querySelectorAll("button");
-    console.log(boutonSupp);
     
     // boucle pour récuperer la valeur dans le localstorage
     for (let a= 0; a<produitDansLocalStorage2.length; a++){
-                let supprimeValeurLocalStorage = [produitDansLocalStorage2[a]];     
-        console.log(supprimeValeurLocalStorage);
-        
+                let supprimeValeurLocalStorage = [produitDansLocalStorage2[a]];           
     }   
 
     for (let b =0 ; b <boutonSupp.length; b++){
@@ -161,6 +119,21 @@ else {
             // panierVide.remove();
             containermontantTotalPanier.remove;        
         }
+        
+        // fonction crée pour modifié le montant total en fonction de la saisie sur input
+                 const inputEcoute = document.getElementsByClassName("inp");
+               for (let c = 0; c < inputEcoute.length; c++){  
+               inputEcoute[c].addEventListener('change', (arrange)=> {
+           
+               let montantPanier2 = document.getElementsByClassName("montantApayer");        
+                   montantPanier2[c].innerHTML = inputEcoute[c].value * produitDansLocalStorage2[c].prix ; 
+                   
+                   produitDansLocalStorage2[c].quantite = inputEcoute[c].value;
+                   produitDansLocalStorage2[c].prixTotal = parseInt (montantPanier2[c].innerHTML);        
+                   localStorage.setItem("produitphoto", JSON.stringify(produitDansLocalStorage2)); 
+                   location.reload();                        
+        }) ;
+        } 
 
      let containermontantTotalPanier = document.createElement("div");
      containermontantTotalPanier.id ="containerTotalPanier";    
@@ -211,10 +184,7 @@ else {
 
      //déclaration de la variable pour pouvoir y mettre les prix qui sont le panier
 
-    let recupValeur = []; 
-    console.log(recupValeur); 
-
-    
+    let recupValeur = [];        
     
     // aller chercher les prix dans le panier
     
@@ -223,54 +193,21 @@ else {
         let prixProduitDansPanier =  produitDansLocalStorage2[d].prixTotal;
         // Mettre les prix dans un tableau
         recupValeur.push(prixProduitDansPanier);        
-        console.log(prixProduitDansPanier);
+        
     }
     // pour additionner le montant du tableau
-        const reducer = (accumulator, currentValue) => accumulator + currentValue;   
-        const prixTotalpannier = recupValeur.reduce(reducer,0);
-        console.log(prixTotalpannier);
-        let valeurdef = document.getElementById("montantApayer");
+        const reducer = (previousValue, currentValue) => previousValue + currentValue;         
+        const prixTotalpannier = recupValeur.reduce(reducer,1);   
+        
+        let ligneProduit2 = document.createElement("div");
+        ligneProduit2.id = "Articlebis2";
+        ligneProduit.appendChild(ligneProduit2);
+        ligneProduit2.innerHTML =  prixTotalpannier + " "+ "€";
 
- // fonction crée pour modifié le montant total en fonction de la saisie sur input
-      
- 
-//  let inputEcoute = document.getElementById("inp");
-//         console.log(inputEcoute.value);  
-        
-//         inputEcoute.addEventListener('change', updateValue)
-    
-//         let montantPanier2 = document.getElementById("montantApayer");
-    
-    
-//         // test pour modifier la valeur dans le localStorage
-//         function updateValue(){
-            
-//             montantPanier2.innerHTML = inputEcoute.value * produitDansLocalStorage2[0].prix ; 
-//             console.log(montantPanier2.innerHTML);
-//             produitDansLocalStorage2[0].quantite = inputEcoute.value;
-//             produitDansLocalStorage2[0].prixTotal = montantPanier2.innerHTML;
-//             console.log(inputEcoute.value);  
-//             localStorage.setItem("produitphoto", JSON.stringify(produitDansLocalStorage2)); 
-                 
-//         }
-        
-//         console.log(produitDansLocalStorage2);
-    
-    
-        
-        
-        
-
-
-    let totalProd2 = document.createElement("div");
-    totalProd2.id = "totalProd2";
-    totalProd.appendChild(totalProd2);
-    totalProd2.innerHTML =  prixTotalpannier + prixLivraison  + " "+ " €" ;
-
-    let ligneProduit2 = document.createElement("div");
-    ligneProduit2.id = "Articlebis2";
-    ligneProduit.appendChild(ligneProduit2);
-    ligneProduit2.innerHTML =  prixTotalpannier + " "+ "€";
+        let totalProd2 = document.createElement("div");
+        totalProd2.id = "totalProd2";
+        totalProd.appendChild(totalProd2);
+        totalProd2.innerHTML =  prixTotalpannier + prixLivraison  + " "+ " €" ;
     }
           
 // local storage
@@ -393,13 +330,15 @@ function f_valid(e){
     })
 
 
+    
+    // alert("Bonjour Mr " +formulaire[0] +" " +"votre commande a bien été transmise,elle porte le n°" +" " +"294" +" "+"pour un montant de"+" "+valeurTotal.textContent +" "+ "un email vient de vous être envoyé à l'adresse suivante : " +formulaire[5] + "  ainsi qu'une confirmation pas sms."
+    // );
+    
+    // localStorage.clear();
+}
+window.location = "confirm.html";
 
-
-        alert("Bonjour Mr " +formulaire[0] +" " +"votre commande a bien été transmise,elle porte le n°" +" " +"294" +" "+"pour un montant de"+" "+valeurTotal.textContent +" "+ "un email vient de vous être envoyé à l'adresse suivante : " +formulaire[5] + "  ainsi qu'une confirmation pas sms."
-        );
-
-        // localStorage.clear();
-    }
+    
 }
 
      
