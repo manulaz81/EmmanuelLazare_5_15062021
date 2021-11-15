@@ -1,6 +1,7 @@
 let positionElement = document.getElementById("commande");
 let containerRecapEtTotal = document.getElementById("containerRecapEtTotal");
-
+let totalPanier =[];
+let idPanier = [];
 let produitDansLocalStorage2 = JSON.parse(localStorage.getItem("produitphoto"));
 
 //affichage des produits du panier
@@ -208,9 +209,12 @@ else {
         totalProd2.id = "totalProd2";
         totalProd.appendChild(totalProd2);
         totalProd2.innerHTML =  prixTotalpannier + prixLivraison  + " "+ " €" ;
+        console.log(totalProd2.textContent);
+        
+        // local storage
     }
-          
-// local storage
+    totalPanier.push(parseInt(totalProd2.textContent));
+    idPanier.push(produitDansLocalStorage2);
  
 //**************************fin article du panier*****************************/
 
@@ -277,67 +281,95 @@ function f_valid(e){
         nom_m.style.color = 'orange';
     }
        
-    else{
-
-        let formulaire = [nom.value, prenom.value,adresse.value, ville.value,phone.value,email.value];
-        let valeurTotal = document.getElementById('totalProd2');
-        console.log(valeurTotal.textContent);
-        console.log(formulaire[5]);
-
-
- // envoie de l'objet vers le serveur
-
-        // let objetResultat = {
-        //     contact : {
-        //         firstName : newClient.formulaire[0],
-        //         lastName : newClient.formulaire[1],
-        //         address : newClient.formulaire[2],
-        //         city : newClient.formulaire[3],
-        //         email : newClient.formulaire[4],
-        //     },
-        //     products : productsId
-        // }
-        // console.log(objetResultat);
+    else{      
+        let client = {
+            nom :  nom.value,
+            prenom: prenom.value,
+            adresse :adresse.value,
+            ville : ville.value,
+            email :email.value
+        };
 
 
-        const formulaire1 = formulaire;       
-          console.log(formulaire1);
+        let commandeDuClient = {
+            contact : {
+                firstName : client.nom,
+                lastName : client.prenom,
+                address : client.adresse,
+                city : client.ville,
+                email : client.email
+            },
+            products : idPanier  
+        }
+        console.log(idPanier);
+        alert("6");
+        console.log(commandeDuClient);
+        console.log(client);
+        // event.preventDefault();
+        // let newClient = new Client (
+        //     document.getElementById('#ville').value,
+           
+        // );
+    
+
+
+
+console.log(totalPanier);
+    
         
  fetch('http://localhost:3000/api/cameras/order', {
     method: 'POST',    
     headers : {
-        'Accept' : 'application/json',
-        'Content-type' : 'application/json'
+        // 'Accept' : 'application/json',
+        // 'Content-type' : 'application/json'
     },
-    body : JSON.stringify(formulaire1)
-})
+    body : JSON.stringify(client)
+    
 
+})
 // pour voir le résultat du serveur dans la console
 
- .then(function(res){
-     if (res.ok){
-          console.log( response.json())
-        }
-    })
- .then (function(){
-     document
-        .getElementById('donneeForm')
-        .innerHTML = formulaire; 
+.then((response) =>response.json())      
+.then((response) => { 
+    let objCommande = {
+        idCommande : response.orderId,    
+        prixTotal : totalPanier          
+    }
+    console.log(objCommande);
+    let client2 = 
+        JSON.stringify(client);
+    
+
+
+         //  localStorage.clear();
+     
+    let commandebis = JSON.stringify(objCommande);
+
+    console.log(commandebis)
+    alert ("b");
+    // localStorage.setItem('commande', commandebis);
+    // window.location = 'confirm.html';
+        // let commandeTotale = 121312;          
+        // console.log(commandeTotale);
+        
+        localStorage.setItem("confirmation", commandebis);  
+        localStorage.setItem("InfoClient", client2);
+        alert("ho!!")   ;   
+            location.assign ("confirm.html");
+
+
  })      
     
  .catch (function(e){
   alert("probleme de connexion");
     })
 
-
     
-    // alert("Bonjour Mr " +formulaire[0] +" " +"votre commande a bien été transmise,elle porte le n°" +" " +"294" +" "+"pour un montant de"+" "+valeurTotal.textContent +" "+ "un email vient de vous être envoyé à l'adresse suivante : " +formulaire[5] + "  ainsi qu'une confirmation pas sms."
-    // );
+    
     
     // localStorage.clear();
-}
-window.location = "confirm.html";
 
+    }
     
 }
 

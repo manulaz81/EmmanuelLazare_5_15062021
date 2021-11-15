@@ -404,5 +404,18 @@ font-weight: 900;
 /**********page confirmation  *****************/
 
 #logoconfirm{
-  width : 130px;  
+  width : 180px;  
+}
+
+#commandeValidé{
+    border : solid 1px black;
+    padding: 10px;
+    margin-bottom: 130px;
+}
+.titreConfirm{
+    font-size: 1.6rem;
+    width: 79%;
+    margin: auto;
+    padding: 10px;
+
 }

@@ -4,6 +4,7 @@ let containerCam = document.getElementById("containerCam2");
 
 fetch("http://localhost:3000/api/cameras")
 
+
 .then((res) => res.json())
 
 .then((data) => { 
