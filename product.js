@@ -120,7 +120,7 @@ fetch('http://localhost:3000/api/cameras/'+ id )
               nom : data.name ,
               option : testnom.value,
               quantite : quantiteCam.value,
-              prix : data.price ,
+              prix : data.price/100 ,
               prixTotal : data.price *quantiteCam.value/100 ,
               };
      
@@ -141,6 +141,8 @@ fetch('http://localhost:3000/api/cameras/'+ id )
           else{
               window.location.href = "index.html";
           }
+
+          
           }
         // // // s il y a deja des produits d'enregistré dans le local storage
           if(produitDansLocalStorage){
@@ -149,6 +151,11 @@ fetch('http://localhost:3000/api/cameras/'+ id )
               console.log(produitDansLocalStorage);
               popupConfirmation();
           }
+
+          //function essai pour même valeur
+          // function memevaleur(){ if {produitDansLocalStorage.id===id et produitDansLocalStorage.option === option.value} alors tu m'ajoute uniquement l {localStorage.setItem("produitphoto", JSON.stringify(produitDansLocalStorage)")}}
+
+          //
 
           
         // s il n'y a pas de produit enregistré dans le local storage
@@ -160,10 +167,7 @@ fetch('http://localhost:3000/api/cameras/'+ id )
                   localStorage.setItem("produitphoto", JSON.stringify(produitDansLocalStorage));
                   popupConfirmation()                    
                   console.log(produitDansLocalStorage);
-                };
-                
-                
-                
+                };               
               } 
             } 
           }             

@@ -44,4 +44,6 @@ fetch("http://localhost:3000/api/cameras")
             }
             
         })
- .catch(e => console.log(e));          
+        .catch (function(e){
+            alert("probleme de connexion");
+            })         

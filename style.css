@@ -18,6 +18,12 @@ section{
     width : 90%;
 }
 
+/*********************page produit*****************/
+
+
+
+/*fin page produit*/
+
 .panier{
     width : 30%; 
     font-size: 1.5rem;
@@ -396,6 +402,28 @@ font-weight: 900;
 }
 #choixSelection{
     width: 120px;
+}
+
+#containerRecapEtTotal{
+display: flex;
+flex-wrap: wrap;
+margin: auto;
+}
+#containerRecap1{
+    width: 1080px;
+    margin-bottom: 30px;
+}
+#containerTotalPanier{
+    width : 50%;
+    margin: auto;
+    height: 260px;
+    
+}
+#photocaddie{
+    display: none;
+}
+#photoPro{
+    height: 130px;
 }
 
 }

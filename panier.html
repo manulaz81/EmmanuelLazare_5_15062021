@@ -24,9 +24,30 @@
         </div>         
       </div>
      </section>
+
+<!--formulair d'essai-->
+<form  action=" " id="form"method="submit" enctype="multipart/form-data" >
+  
+  
+  <label for= "firstName">Saisissez une valeur <input type="text" id="firstName2" /></label><br />
+  <label for= "lastName">Saisissez une valeur <input type="text" id="lastName2" /></label><br />
+  <label for = "address">Saisissez une valeur <input type="text" id="adress2" /></label><br />
+  <label for = "city">Saisissez une valeur <input type="text" id="city2" /></label><br />
+  <label for = "email">Saisissez une valeur <input type="text" id="email2" /></label><br />
+  
+
+  <input type="submit" id ="boutonsub" value="Envoyer" />
+</form>
+<div id="result"></div>
+
+
+
+
+<!--fin formulaire d'essai-->
+
      
      <!--------------------------------formulaire  ---------------------------->
-        <form action="" method="get" class="formulaire">
+        <!-- <form action="" method="get" id="formulaire">
           <div class="pourvalid"> Pour valider votre commande, merci de remplir le champs formulaire ci dessous et appuyer sur le bouton "Soumettre votre commande":
           </div>
           <div class="form">  
@@ -64,15 +85,7 @@
                     <span id="villeManquant"></span> 
                   </div>
                 </div>    
-                <div class="form">
-                  <div class="cellule">
-                    <label for="phone">Téléphone*:</label>
-                  </div>
-                  <div class="inputErreur"> 
-                    <input type="text" name="phone" id="phone" required placeholder="votre numéro de téléphone"class="inputvalidation" pattern="[0-9]{10}"required >
-                    <span id="phoneManquant"></span> 
-                  </div>
-                </div>
+                
                 <div class="form">
                    <div class="cellule">
                     <label for="email"class="cellule">E-mail* : </label>
@@ -90,7 +103,7 @@
           </div>
             <div class="champsobli">* Champs obligatoires
             </div>
-        </form>
+        </form> -->
 
         <div id="donneeForm"></div>
         
@@ -103,6 +116,7 @@
             </footer>        
 
             <script src ="panier.js"></script>
+            
            
 </body>
 </html>
