@@ -23,7 +23,6 @@ fetch("http://localhost:3000/api/cameras")
              let imageCam = document.createElement("img");   
              imageCam.classList.add ("photo");
              imageCam.src = data[i].imageUrl;  
-             imageCam.style.width = "100%";
              imageCam.style.marginBottom = "10px";
              imageCam.style.borderRadius = "15px 15px 0 0";
              containercarte.appendChild(imageCam);        

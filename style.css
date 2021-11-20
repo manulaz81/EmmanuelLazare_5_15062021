@@ -1,8 +1,9 @@
+/*********page index *******/
+
 body{
     width: 90%;
     margin:auto;    
 }
-
 header{
     width: 90%;
     display: flex;
@@ -10,13 +11,65 @@ header{
     margin-top: 20px;
     margin-bottom: 30px;  
     color : black;  
+    background-color: black;
 }
 .description{
     height: 100px;
 }
 section{
     width : 90%;
+    background-color: black;
+    border : 1px solid red;
 }
+.photo{  
+width: 220px;
+height: auto;
+border : 1px solid red;
+padding: 3%;
+margin-right: 10px;
+}
+.barreRecherche
+{
+    margin: auto;
+    padding: 20px;
+    width: 50%;
+    font-size: 1.6rem;
+}
+.inputRecherche{
+    font-size: 1.5rem;
+    width: 80%;
+}
+.cherche{
+    width : 10%;
+    margin: auto;
+    font-size: 1.6rem;
+    padding: 2px ;
+    text-align: center;
+    color : whitesmoke;
+}
+.blackFriday{
+    color : whitesmoke;
+    width :50%;
+    border : 1px dashed red ;
+    font-size: 1.9rem;
+   
+
+}
+.promo{
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.alertPromo{
+    color: whitesmoke;
+    width: 50%;
+    font-size: 1.9rem;
+    text-align: left;
+    border : 1px dashed red ;
+}
+
+
 
 /*********************page produit*****************/
 
@@ -25,20 +78,31 @@ section{
 /*fin page produit*/
 
 .panier{
-    width : 30%; 
+    width : 40%; 
     font-size: 1.5rem;
-    margin: auto;        
-    text-align: right;      
+    margin: auto;    
+    justify-content: space-between;  
+    color: whitesmoke;  
+    display: flex;
+    
 }
 .panierText{
+    width : 50%;
+    padding : 10px;
     text-decoration: none;
-    color: black;
-    margin-left: 10px;
+    color: whitesmoke;
+    margin: auto;
 }
+.caddiePanier,.seConnect{
+    width : 50%;   
+    font-size: 1.2rem;  
+   
+}
+
 .caddie{
     margin-right: 10px;
 }
-
+/* 
 .titre{
     width : 60%;
     color: azure;
@@ -46,10 +110,10 @@ section{
     font-weight: 600;
     border : 1px grey;
     background-color: grey;
-}
+} */
 
 #containerCam2{
-    display: flex;
+    
     justify-content: space-around;
 }
 
@@ -367,12 +431,15 @@ font-weight: 900;
     border-radius : 20px;
     height : 250px; 
    width : 250px;  
-         
+    border : 1px solid black;
     margin :auto;
     margin-right : 15px;
     margin-top:  20px;
     margin-bottom : 20px;
     text-align: center;
+    padding : 2px;
+    background:  radial-gradient(#f69d3c, #3f87a6);;
+    
 
 }
 #choixSelection{
@@ -432,7 +499,8 @@ margin: auto;
 /**********page confirmation  *****************/
 
 #logoconfirm{
-  width : 180px;  
+  width : 200px;  
+  padding: 20px;
 }
 
 #commandeValidé{
