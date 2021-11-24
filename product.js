@@ -55,12 +55,13 @@ fetch('http://localhost:3000/api/cameras/'+ id )
     selectchoix.innerHTML = "choisir options";
     lenseCam5.appendChild(selectchoix);     
                     
-    for(let i in data.lenses){   
+    for(let i in data.lenses)
+      {   
         let lenseCam = document.createElement("option");            
         lenseCam.innerHTML = data.lenses[i];
         lenseCam5.appendChild(lenseCam);
         lenseCam.id = "optionSelectionnee";
-    };                
+      };                
         
     // essai pour changer le nom de la camera
     let testnom = document.getElementById('choixSelection');
@@ -107,191 +108,105 @@ fetch('http://localhost:3000/api/cameras/'+ id )
 
     // pour ajouter au panier         
     bouton.addEventListener('click',changeTexte);
-    function changeTexte(){             
-        if (testnom.value==="choisir options")
-        alert ("vous devez obligatoirement choisir une option");       
-        else if (quantiteCam.value<1)
-        alert ("saisie impossible car votre quantité est négative ou nulle")
-        else{                 
-         
-            // création d'une variable qui contient les valeurs du produit selectionné
-              let produitSelect = {
-              id : id ,
-              photoPanier : data.imageUrl,
-              nom : data.name ,
-              option : testnom.value,
-              quantite : quantiteCam.value,
-              prix : data.price/100 ,
-              prixTotal : data.price *quantiteCam.value/100 ,
-              };
-     
+    function changeTexte()
+    {             
+      if (testnom.value==="choisir options")
+      alert ("vous devez obligatoirement choisir une option");       
+      else if (quantiteCam.value<1)
+      alert ("saisie impossible car votre quantité est négative ou nulle")
+      else
+      {                 
+
+        // création d'une variable qui contient les valeurs du produit selectionné
+        let produitSelect = 
+        {
+          id : id ,
+          photoPanier : data.imageUrl,
+          nom : data.name ,
+          option : testnom.value,
+          quantite : quantiteCam.value,
+          prix : data.price/100 ,
+          prixTotal : data.price *quantiteCam.value/100 ,
+        };
+                    
         //-------------------Le localStorage---------------//
         // stocker la recuperation des valeurs du formulaire dans le local storage 
         // déclaration de la variable "produitEnregisterDanslelocalStorage"
                 
-          let produitDansLocalStorage = JSON.parse(localStorage.getItem("produitphoto"));
-          console.log(produitDansLocalStorage);
-                              
+        let produitDansLocalStorage = JSON.parse(localStorage.getItem("produitphoto"));
+        console.log(produitDansLocalStorage);
+                                  
         // Json.parse c'est pour convertir les donnée au format json qui sont dans le local storage en objet javascript
         
         // création d'une variable qui permet de dire que l'objet a été ajouté
-          const popupConfirmation = ()=>{
-          if(alert("la caméra"+" "+ (data.name) + " "+ 'a bien été ajouté dans votre panier')){
-              ;
+        const popupConfirmation = ()=>
+        {
+          if(alert("la caméra"+" "+ (data.name) + " "+ 'a bien été ajouté dans votre panier'))
+          {
+            ;
           }
-          else{
-              window.location.href = "index.html";
+          else
+          {
+            window.location.href = "index.html";
           }
-          }
+        }
           
           //  si il y un produit avec id identique dans le localStorage
-          function produitPush(){   
-            if(produitDansLocalStorage){
-              alert("il y a un produit dans le localstorage, vérifier maintenant id");
+        function produitPush()
+          {   
+            if(produitDansLocalStorage)
+              {
+               alert("il y a un produit dans le localstorage, vérifier maintenant id");
                 let tableauId = [];
-                for ( let d=0; d<produitDansLocalStorage.length; d++){
-                    let idregrouper = produitDansLocalStorage[d].id;
+                for (let d=0; d<produitDansLocalStorage.length; d++)
+                  {let idregrouper = produitDansLocalStorage[d].id;
                     tableauId.push(idregrouper);
-                }
-                console.log(tableauId);
-                console.log(tableauId.indexOf(id));
+                  }
+                  console.log(tableauId);
+                  console.log(tableauId.indexOf(id));
 
                 if(tableauId.indexOf(id)>=0){
-                  console.log(produitSelect.id);
-                  alert("produit déja dans le localstorage");
-                                                    
-                  // rajouter la quantite dans le produit contenant cet id
-                
+                    console.log(produitSelect.id);
+                    alert("produit déja dans le localstorage");
 
-                  //rechercher l'id selectionner dans le tableau du local storage
-                  const found = produitDansLocalStorage.find(element=>element = id);
-                  console.log(found);
+                    // rajouter la quantite dans le produit contenant cet id                
 
-                  // je modifie la quantité dans la const
-                  found.quantite = quantiteCam.value;
+                    //rechercher l'id selectionner dans le tableau du local storage
+                    const found = produitDansLocalStorage.find(element=>element = id);
+                    console.log(found);
+
+                    // je modifie la quantité dans la const
+                    found.quantite = quantiteCam.value;
 
 
-                  alert("recherche id dans le tableau fait !!");
-                  // produitDansLocalStorage.push(produitSelect);
-                  localStorage.setItem("produitphoto", JSON.stringify(produitDansLocalStorage));
-                  popupConfirmation(); 
-                }
+                    alert("recherche id dans le tableau fait !!");
+                    // produitDansLocalStorage.push(produitSelect);
+                    localStorage.setItem("produitphoto", JSON.stringify(produitDansLocalStorage));
+                    popupConfirmation(); 
+                    }
                 else{  
-                  alert("produit sans même id");                
-                  produitDansLocalStorage.push(produitSelect);
-                  alert("stop it bizarre");
-                  localStorage.setItem("produitphoto", JSON.stringify(produitDansLocalStorage));
-                  popupConfirmation(); 
+                    alert("produit sans même id");                
+                    produitDansLocalStorage.push(produitSelect);
+                    alert("stop it bizarre");
+                    localStorage.setItem("produitphoto", JSON.stringify(produitDansLocalStorage));
+                    popupConfirmation(); 
+                    }
 
-                }
-
-
-
-            //     // s'il y a le même id on rajoute juste la quantité à l'id
-            //     if (produitDansLocalStorage){'"2eme alerte'
-            //   produitDansLocalStorage.push(produitSelect);
-            //   localStorage.setItem("produitphoto", JSON.stringify(produitDansLocalStorage));
-            //   popupConfirmation(); 
-            // }
-
-                // sinon on ajoute le produit             
-              
-            }
+              }
             else{
-              produitDansLocalStorage = [];
-              produitDansLocalStorage.push(produitSelect);
-              localStorage.setItem("produitphoto", JSON.stringify(produitDansLocalStorage));
-              popupConfirmation(); 
-              
-            }
+                  produitDansLocalStorage = [];
+                  produitDansLocalStorage.push(produitSelect);
+                  localStorage.setItem("produitphoto", JSON.stringify(produitDansLocalStorage));
+                  popupConfirmation();               
+                }
           }
           
-          produitPush();
-
-            
-            
-
-            // if(produitDansLocalStorage){
-              // alert("pas mal !");              
-              //           
-              //           for ( let d=0; d<produitDansLocalStorage.length; d++){
-              //             let idregrouper = produitDansLocalStorage[d].id;
-              //             tableauId.push(idregrouper);
-              //           }
-              //           console.log(tableauId);
-              
-                        // console.log(produitDansLocalStorage.id);
-                        // console.log(id === produitDansLocalStorage[1].id);
-                        // 
-
-        //     if(tableauId.indexOf(id)>=0){
-        //       alert("id identique !");
-        //        produitSelect.quantite++; 
-        //       produitDansLocalStorage.push(produitSelect);             
-        //       localStorage.setItem("produitphoto", JSON.stringify(produitDansLocalStorage));
-        //       popupConfirmation(); 
-        //       location.reload();        
-        //     }
-
-        //     else{
-        //       alert("bof");
-        //       produitDansLocalStorage.push(produitSelect);             
-        //       localStorage.setItem("produitphoto", JSON.stringify(produitDansLocalStorage));
-        //       popupConfirmation(); 
-        //       location.reload();         
-        //     }
-        // }
-
-        // else{
-        //   alert("ca va pas!!");
-        //   produitDansLocalStorage = [];
-        //   produitDansLocalStorage.push(produitSelect);
-        //   localStorage.setItem("produitphoto", JSON.stringify(produitDansLocalStorage));
-        //   popupConfirmation(); 
-          
-        // }
-        
-        // produitId.push(tableauID);
-        //  console.log(produitId);
-        // produitDansLocalStorage.push(produitSelect);
-        // localStorage.setItem("produitphoto", JSON.stringify(produitDansLocalStorage));
-        // popupConfirmation(); 
-      // }  
-      
-      // s'il n'y a rien dans le localStorage
+          produitPush(); 
       
       
       
-      
-      
-    };
+          };
     
-    //  if(produitDansLocalStorage){   
-      //mettre un parametre dans produit push
-      // produitPush();
-      // VerifID ();
-      
-      // on rajoute seulement la qauntité +1
-      // produitDansLocalStorage[0].quantite = "changement";
-      // produitDansLocalStorage[0].push(produitSelect);
-      // localStorage.setItem("produitphoto", JSON.stringify(produitDansLocalStorage));
-      // popupConfirmation(); 
-      // let  recupID = JSON.parse(localStorage.getItem("produitphoto"));
-      // ;
-      
-      // let produitId = [];
-      // for ( let u=0; u<recupID.length; u++){
-      
-      //  produiId.push(recupID[u].id);
-      // }
-       
-          // }  
-          // else {
-          //   produitDansLocalStorage = [];
-                         
-          //   produitPush();
-          // };                      
-              // } 
               
             }   
             
