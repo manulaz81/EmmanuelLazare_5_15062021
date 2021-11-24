@@ -5,6 +5,8 @@ let nomDeLaCam = document.getElementById("nomDeLaCamera");
 let descript = document.getElementById("descript");
 let prix = document.getElementById("prix");
 let commandecam = document.getElementById("commandecam");
+let contact1 = document.getElementsByClassName("contact");
+
 
 // récupération de la chaine de requete dans l'url
 // search : la partie de l'url qui suit le symbol "?" avec ce symbol inclus 
@@ -39,7 +41,6 @@ fetch('http://localhost:3000/api/cameras/'+ id )
     // récuperation  de la description de la camera
     let descripCam = document.createElement("div");
     descripCam.innerHTML="Description : " + " " +  data.description;
-    descripCam.style.color = "black";   
     descripCam.style.marginBottom = "10px";     
     descript.appendChild(descripCam);
           
@@ -141,37 +142,165 @@ fetch('http://localhost:3000/api/cameras/'+ id )
           else{
               window.location.href = "index.html";
           }
-
-          
           }
-        // // // s il y a deja des produits d'enregistré dans le local storage
-          if(produitDansLocalStorage){
+          
+          //  si il y un produit avec id identique dans le localStorage
+          function produitPush(){   
+            if(produitDansLocalStorage){
+              alert("il y a un produit dans le localstorage, vérifier maintenant id");
+                let tableauId = [];
+                for ( let d=0; d<produitDansLocalStorage.length; d++){
+                    let idregrouper = produitDansLocalStorage[d].id;
+                    tableauId.push(idregrouper);
+                }
+                console.log(tableauId);
+                console.log(tableauId.indexOf(id));
+
+                if(tableauId.indexOf(id)>=0){
+                  console.log(produitSelect.id);
+                  alert("produit déja dans le localstorage");
+                                                    
+                  // rajouter la quantite dans le produit contenant cet id
+                
+
+                  //rechercher l'id selectionner dans le tableau du local storage
+                  const found = produitDansLocalStorage.find(element=>element = id);
+                  console.log(found);
+
+                  // je modifie la quantité dans la const
+                  found.quantite = quantiteCam.value;
+
+
+                  alert("recherche id dans le tableau fait !!");
+                  // produitDansLocalStorage.push(produitSelect);
+                  localStorage.setItem("produitphoto", JSON.stringify(produitDansLocalStorage));
+                  popupConfirmation(); 
+                }
+                else{  
+                  alert("produit sans même id");                
+                  produitDansLocalStorage.push(produitSelect);
+                  alert("stop it bizarre");
+                  localStorage.setItem("produitphoto", JSON.stringify(produitDansLocalStorage));
+                  popupConfirmation(); 
+
+                }
+
+
+
+            //     // s'il y a le même id on rajoute juste la quantité à l'id
+            //     if (produitDansLocalStorage){'"2eme alerte'
+            //   produitDansLocalStorage.push(produitSelect);
+            //   localStorage.setItem("produitphoto", JSON.stringify(produitDansLocalStorage));
+            //   popupConfirmation(); 
+            // }
+
+                // sinon on ajoute le produit             
+              
+            }
+            else{
+              produitDansLocalStorage = [];
               produitDansLocalStorage.push(produitSelect);
               localStorage.setItem("produitphoto", JSON.stringify(produitDansLocalStorage));
-              console.log(produitDansLocalStorage);
-              popupConfirmation();
+              popupConfirmation(); 
+              
+            }
           }
-
-          //function essai pour même valeur
-          // function memevaleur(){ if {produitDansLocalStorage.id===id et produitDansLocalStorage.option === option.value} alors tu m'ajoute uniquement l {localStorage.setItem("produitphoto", JSON.stringify(produitDansLocalStorage)")}}
-
-          //
-
           
-        // s il n'y a pas de produit enregistré dans le local storage
-                
-                else {
-                    produitDansLocalStorage = [];
-                    produitDansLocalStorage.push(produitSelect);
-                  // création de la clé produit
-                  localStorage.setItem("produitphoto", JSON.stringify(produitDansLocalStorage));
-                  popupConfirmation()                    
-                  console.log(produitDansLocalStorage);
-                };               
-              } 
-            } 
-          }             
-})
+          produitPush();
 
-.catch(error => console.log ( error))
+            
+            
 
+            // if(produitDansLocalStorage){
+              // alert("pas mal !");              
+              //           
+              //           for ( let d=0; d<produitDansLocalStorage.length; d++){
+              //             let idregrouper = produitDansLocalStorage[d].id;
+              //             tableauId.push(idregrouper);
+              //           }
+              //           console.log(tableauId);
+              
+                        // console.log(produitDansLocalStorage.id);
+                        // console.log(id === produitDansLocalStorage[1].id);
+                        // 
+
+        //     if(tableauId.indexOf(id)>=0){
+        //       alert("id identique !");
+        //        produitSelect.quantite++; 
+        //       produitDansLocalStorage.push(produitSelect);             
+        //       localStorage.setItem("produitphoto", JSON.stringify(produitDansLocalStorage));
+        //       popupConfirmation(); 
+        //       location.reload();        
+        //     }
+
+        //     else{
+        //       alert("bof");
+        //       produitDansLocalStorage.push(produitSelect);             
+        //       localStorage.setItem("produitphoto", JSON.stringify(produitDansLocalStorage));
+        //       popupConfirmation(); 
+        //       location.reload();         
+        //     }
+        // }
+
+        // else{
+        //   alert("ca va pas!!");
+        //   produitDansLocalStorage = [];
+        //   produitDansLocalStorage.push(produitSelect);
+        //   localStorage.setItem("produitphoto", JSON.stringify(produitDansLocalStorage));
+        //   popupConfirmation(); 
+          
+        // }
+        
+        // produitId.push(tableauID);
+        //  console.log(produitId);
+        // produitDansLocalStorage.push(produitSelect);
+        // localStorage.setItem("produitphoto", JSON.stringify(produitDansLocalStorage));
+        // popupConfirmation(); 
+      // }  
+      
+      // s'il n'y a rien dans le localStorage
+      
+      
+      
+      
+      
+    };
+    
+    //  if(produitDansLocalStorage){   
+      //mettre un parametre dans produit push
+      // produitPush();
+      // VerifID ();
+      
+      // on rajoute seulement la qauntité +1
+      // produitDansLocalStorage[0].quantite = "changement";
+      // produitDansLocalStorage[0].push(produitSelect);
+      // localStorage.setItem("produitphoto", JSON.stringify(produitDansLocalStorage));
+      // popupConfirmation(); 
+      // let  recupID = JSON.parse(localStorage.getItem("produitphoto"));
+      // ;
+      
+      // let produitId = [];
+      // for ( let u=0; u<recupID.length; u++){
+      
+      //  produiId.push(recupID[u].id);
+      // }
+       
+          // }  
+          // else {
+          //   produitDansLocalStorage = [];
+                         
+          //   produitPush();
+          // };                      
+              // } 
+              
+            }   
+            
+            
+          } 
+        })     
+        
+        .catch(error =>  error) ;       
+
+        
+
+        

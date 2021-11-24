@@ -1,122 +1,60 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/style.css">
-    <link rel="stylesheet" href="confirm.html"> 
-    <script src="https://kit.fontawesome.com/b99458d354.js" crossorigin="anonymous"></script>
-    <title>Orinico</title>
-</head>
-<body >
+  <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="/style.css">
+      <link rel="stylesheet" href="confirm.html"> 
+      <script src="https://kit.fontawesome.com/b99458d354.js" crossorigin="anonymous"></script>
+      <title>Orinico</title>
+  </head>
+  <body>   
     <header>
-        <div class="titre">Orinico, site spécialisé de vente de caméra</div>
-        <nav class="panier">
-            <a  class="panierText"href="/index.html">Menu</a> 
-        </nav>
-    </header>
-    
-    <section class="article">  
-      <div id="commande"></div>
-      <div id="containerRecapEtTotal">
-        <div id="containerRecap1">
-        </div>         
+      <div class="classLogo"> 
+          <img id="logoconfirm"src="orinoco.png" class="logo__image ">
+          <img>
       </div>
-     </section>
-
-<!--formulair d'essai-->
-<form  action=" " id="form"method="submit" enctype="multipart/form-data" >
-  
-  
-  <label for= "firstName">Saisissez une valeur <input type="text" id="firstName2" /></label><br />
-  <label for= "lastName">Saisissez une valeur <input type="text" id="lastName2" /></label><br />
-  <label for = "address">Saisissez une valeur <input type="text" id="adress2" /></label><br />
-  <label for = "city">Saisissez une valeur <input type="text" id="city2" /></label><br />
-  <label for = "email">Saisissez une valeur <input type="text" id="email2" /></label><br />
-  
-
-  <input type="submit" id ="boutonsub" value="Envoyer" />
-</form>
-<div id="result"></div>
-
-
-
-
-<!--fin formulaire d'essai-->
-
-     
-     <!--------------------------------formulaire  ---------------------------->
-        <!-- <form action="" method="get" id="formulaire">
-          <div class="pourvalid"> Pour valider votre commande, merci de remplir le champs formulaire ci dessous et appuyer sur le bouton "Soumettre votre commande":
-          </div>
-          <div class="form">  
-            <div class=formulaire2>    
-              <div class="formulaire1">                
-                <div class="form">
-                  <label for="name" class="cellule">Nom* : 
-                  </label>                   
-                  <div class="inputErreur">           
-                    <input type="text" name="name" id="nom" required maxlength="20" placeholder="Votre nom de famille"class="inputvalidation" pattern="^[-'a-zA-ZÀ-ÖØ-öø-ÿ ]{4,28}$">
-                    <span id="nomManquant"></span> 
-                  </div>
-                </div>    
-                <div class="form">
-                  <label for="name" class="cellule">Prénom* : 
-                  </label>                   
-                  <div class="inputErreur">           
-                    <input type="text" name="name" id="prenom" required maxlength="20" placeholder="Votre nom de famille"class="inputvalidation" pattern="^[-'a-zA-ZÀ-ÖØ-öø-ÿ ]{4,28}$">
-                    <span id="prenomManquant"></span> 
-                  </div>
-                </div>    
-                <div class="form">
-                  <label for="name" class="cellule">Adresse* : 
-                  </label>                   
-                  <div class="inputErreur">           
-                    <input type="text" name="adress" id="adresse" required maxlength="120" placeholder="Votre adresse"class="inputvalidation">
-                    <span id="adresseManquant"> </span> 
-                  </div>
-                </div>    
-                <div class="form">
-                  <label for="name" class="cellule">Ville* : 
-                  </label>                   
-                  <div class="inputErreur">           
-                    <input type="text" name="name" id="ville" required maxlength="130" placeholder="Votre ville"class="inputvalidation"pattern="^[-'a-zA-ZÀ-ÖØ-öø-ÿ ]{2,30}$" required>
-                    <span id="villeManquant"></span> 
-                  </div>
-                </div>    
-                
-                <div class="form">
-                   <div class="cellule">
-                    <label for="email"class="cellule">E-mail* : </label>
-                  </div>
-                    <div class="inputErreur"> 
-                     <input type="email" name="email" id="email" required placeholder="ex: pierrebertrand@gmail.fr"class="inputvalidation" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
-                     <span id="mailManquant"></span> 
-                  </div>
-                </div>
-                </div> 
-                <div class="form__submit">
-                <input type="submit" value="Soumettre votre commande" id='bouton_envoi' class="inputvalidation">
-                </div>
-            </div>  
-          </div>
-            <div class="champsobli">* Champs obligatoires
+      <div class="barreRecherche"> <input type ="text" name="name" placeholder="Recherche ..."class="inputRecherche">
+          <i class="fas fa-search cherche"></i>
+      </div>
+      <div class="panier">
+          <div class="seConnect"><a class="menu" href="index.html">  Menu </a></div>
+      </div>
+    </header>
+    <section class="article">  
+        <div id="commande"></div>
+        <div id="containerRecapEtTotal">
+          <div id="containerRecap1">
+          </div>         
+        </div>
+    </section>
+    <form  action=" " id="form"method="submit" enctype="multipart/form-data" >
+          <div class="formContact">Formulaire de contact</div>
+          <div class="merci">Merci de remplir le formulaire et de l'envoyer</div>
+          <div class ="form_detail">
+            <div class= nomPrenom> 
+              <label for= "firstName">Nom*<input type="text" id="firstName2" placeholder="Nom ..."  required maxlength="20"pattern="^[-'a-zA-ZÀ-ÖØ-öø-ÿ ]{4,28}$" /></label><br />
+              <label for= "lastName">Prénom*<input type="text" id="lastName2"placeholder="Prénom ..." required maxlength="20"pattern="^[-'a-zA-ZÀ-ÖØ-öø-ÿ ]{4,28}$"/></label><br /> 
+              <label for = "address">Adresse* <input type="text" id="adress2"placeholder="Adresse ..."required maxlength="120" /></label><br />
+              <label for = "city">Ville* <input type="text" id="city2"placeholder="Ville ..."required  maxlength="120" /></label><br />
+              <label for = "email">Email* <input type="text" id="email2"placeholder="Email ..."pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required /></label><br />
             </div>
-        </form> -->
+            <div class = "boutonSubmit">
+              <input type="submit" id ="boutonsub" value="Envoyer" />
+            </div> 
+          </div>
+          <div>*Champs obligatoires</div>
+      </form>
+      <div id="result"></div>
 
-        <div id="donneeForm"></div>
-        
-              <footer>
-                <div class="contact">                          
-                    <a href = "https://www.Twitter.com/"><i class="fab fa-twitter-square icone"></i>Twitter</a>
-                    <a href = "https://facebook.com"><i class="fab fa-facebook-square icone"></i>Facebook</a>
-                    <a href = "https://instagram.com"><i class="fab fa-instagram-square icone"></i>Instagram</a>
-                </div>
-            </footer>        
-
-            <script src ="panier.js"></script>
-            
-           
-</body>
+      <footer>
+        <div class="contact">                          
+            <a href = "https://www.Twitter.com/"><i class="fab fa-twitter-square icone"></i>Twitter</a>
+            <a href = "https://facebook.com"><i class="fab fa-facebook-square icone"></i>Facebook</a>
+            <a href = "https://instagram.com"><i class="fab fa-instagram-square icone"></i>Instagram</a>
+        </div>
+      </footer>        
+      <script src ="panier.js"></script>        
+  </body>
 </html>

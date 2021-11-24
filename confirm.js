@@ -7,6 +7,6 @@ let commandeClient = JSON.parse(localStorage.getItem("commande"));
 console.log(commandeClient.idCommande);
 
 
-confirmCommande.innerHTML = "Votre commande a été validée, elle porte le numéro"+" " + commandeClient.idCommande +" "+ "veuillez noter ce numéro, il vous sera demandé. Le montant de votre commande est de" + " "+ commandeClient.prixTotal + " " +  "TTC. Merci de votre confiance, et à bientôt sur Orinico.fr !"
+confirmCommande.innerHTML = "Votre commande a été validée, elle porte le numéro : "+" " +"<br>" + " " + commandeClient.idCommande +" "+"<br>"+ "Veuillez noter ce numéro, il vous sera demandé."+"<br>"+ "Le montant de votre commande est de" + " "+ commandeClient.prixTotal + " " +  "TTC."+" <br>" +"Merci de votre confiance, et à bientôt sur Orinico.fr !"
 
-// localStorage.clear();
+localStorage.clear();

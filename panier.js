@@ -5,6 +5,7 @@ let totalPanier =[];
 let ProductId = [];
 let produitDansLocalStorage2 = JSON.parse(localStorage.getItem("produitphoto"));
 
+
 //affichage des produits du panier
 
 // si le panier est vide : afficher le panier vide
@@ -16,6 +17,11 @@ if(produitDansLocalStorage2 === null){
     </div>
     `
 positionElement.innerHTML = panierVide;
+let formulairevide = `Merci de retourner au menu si vous souhaitez commander !`
+console.log(formulairevide);
+let formulaireNonvisible = document.getElementById("form");
+formulaireNonvisible.innerHTML = formulairevide ;
+
 }
 
 else { 
@@ -80,6 +86,7 @@ else {
         containerRecap.appendChild(boutonSupprimeDuPanier);   
         
         ProductId.push(produitDansLocalStorage2[k].id);
+        
     
     }
     
@@ -110,7 +117,7 @@ else {
               
               //alerter pour avertir que le produit est enlever du panier
               alert ( "Le produit a été retiré du panier !");              
-              window.location.href = "/pages/panier.html"  ;              
+              window.location.href = "panier.html";              
             })        
         }
         
@@ -122,7 +129,9 @@ else {
             `
             positionElement.innerHTML = panierVide;
             // panierVide.remove();
-            containermontantTotalPanier.remove;        
+            let formulvide = document.querySelector("form");
+            formulvide.innerHTML = " ";            
+            containermontantTotalPanier.remove;     
         }
         
         // fonction crée pour modifié le montant total en fonction de la saisie sur input
@@ -136,8 +145,7 @@ else {
                    produitDansLocalStorage2[c].quantite = inputEcoute[c].value;
                    produitDansLocalStorage2[c].prixTotal = parseInt (montantPanier2[c].innerHTML);        
                    localStorage.setItem("produitphoto", JSON.stringify(produitDansLocalStorage2)); 
-                   location.reload();  
-                   
+                   location.reload();                     
                    
         }) ;
         
@@ -205,7 +213,7 @@ else {
     }
     // pour additionner le montant du tableau
         const reducer = (previousValue, currentValue) => previousValue + currentValue;         
-        const prixTotalpannier = recupValeur.reduce(reducer,1);   
+        const prixTotalpannier = recupValeur.reduce(reducer,0);   
         
         let ligneProduit2 = document.createElement("div");
         ligneProduit2.id = "Articlebis2";
@@ -219,7 +227,6 @@ else {
         // console.log(totalProd2.textContent);        
         // local storage
     }
-
 
     totalPanier.push(parseInt(totalProd2.textContent));  
     console.log(ProductId);
@@ -287,385 +294,3 @@ fetch('http://localhost:3000/api/cameras/order', {
       window.location = 'confirm.html';
         });
 }
-
-// function send() {
-  
-  
-  
-    // document.querySelector('#lastName').value,
-    // document.querySelector('#address').value,
-    // document.querySelector('#city').value,
-    // document.querySelector('#email').value,;
-
-     
-    
-  
-  //     let resultat = {
-  //       contact : {
-  //           firstName : newClient.firstName,
-  //           lastName : newClient.lastName,
-  //           address : newClient.address,
-  //           city : newClient.city,
-  //           email : newClient.email
-  //       },
-  //       products : ProductId
-  //   }
-    
-  // console.log(resultat);
-  
-  
-  // document
-  // .getElementById("form")
-
-
-    // e.preventDefault();
-    // fetch("http://url-service-web.com/api/users", {
-    //   method: 'POST',
-    //   headers: { 
-    // 'Accept': 'application/json', 
-    // 'Content-Type': 'application/json' 
-    // },
-    //   body: JSON.stringify(resultat)
-    // })
-    // .then(response => response.json())
-    // .then(response => {
-        
-    //         let objCommande = {
-    //             idCommande : response.orderId,
-    //             prixTotal : totalPanier
-    //         }
-    //         let commande = JSON.stringify(objCommande);
-    //         localStorage.setItem('commande', commande);
-            
-    //     });  
-
-  // };
- 
-    // .then(data=> console.log(data.orderId))
-    
-    // .catch (function(){
-    //       alert("probleme de connexion");
-    //       })   
-    // .then(function(response) {   
-    //   // localStorage.clear();
-      
-    //   let objCommande = {
-    //     idCommande : "300",
-    //     prixTotal : totalPanier       
-    // };
-    // let commande = JSON.stringify(objCommande);
-    // localStorage.setItem('commande', commande);
-    // // window.location = 'confirmation.html';
-    // })
-    // .catch (function(){
-    //       alert("probleme de connexion");
-    //       })   
-        
-  // }
-  
-
-    // alert("requete resussi");
-
-
-//**************************gestion du formulaire*****************************/
-
-// const formulaireContainer =  document.getElementsById("formulaire");
-// const validation = document.getElementById('bouton_envoi');
-// const nom = document.getElementById('nom');
-// const nom_m = document.getElementById('nomManquant');
-// const prenom =  document.getElementById("prenom");
-// const prenom_m = document.getElementById('prenomManquant');
-// const adresse = document.getElementById("adresse");
-// const adresse_m = document.getElementById('adresseManquant');
-// const ville = document.getElementById("ville");
-// const ville_m = document.getElementById('villeManquant');
-// const telephone = document.getElementById("phone");
-// const telephone_m = document.getElementById('phoneManquant');
-// const email = document.getElementById("email");
-// const email_m = document.getElementById('mailManquant');
-
-
-
-//regex pour la ligne prénom
-// var nom_v = /^[a-zA-ZéèîïEÈÎÏ][a-zéèàçîï]+([-'\s][a-zA-ZéèîïEÈÎÏ][a-zéèàçîï]+)?/;
-// var mail_v = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
-
-// class Client {
-//             constructor(firstName, lastName, address, city, email) {
-//             (this.firstName = firstName),
-//             (this.lastName = lastName),
-//             (this.address = address),
-//             (this.city = city),
-//             (this.email = email)     
-//             }
-//         }
-//         let bise = new Client(nom.value,prenom.value,adresse.value,ville.value,email.value);
-//     console.log(bise);
-    
-//         alert("he ben!")
-
-//         let client = {
-            
-//                         contact : { 
-//                         firstName :  nom.value,
-//                         lastName: prenom.value,
-//                         adress :adresse.value,
-//                         city : ville.value,
-//                         email :email.value
-//                     },
-//                         products : ProductId 
-//                     };    
-
-
-
-// function send() {
-// e.preventDefault()
-  
-// fetch('http://localhost:3000/api/cameras/order', {
-// method: 'POST',    
-// headers : {
-//     'accept' : 'application/json', 
-//     'Content-type' : 'application/json'
-// },
-// body : JSON.stringify({value : document.getElementById("nom").value}) 
-
-
-// })
-// // // pour voir le résultat du serveur dans la console
-
-// .then(function (res) {
-//     if(res.ok) {
-//  return res.json();
-//   }   
-//   alert("ho");
-// })
-// .then(function (value) {
-// alert("hé");
-//     document
-//     .getElementById("donneeForm")
-//     .innerText = 6 ;
-// })
-// .catch (function(e){
-//     alert("probleme de connexion");
-//     })   
-
-// }
-
-
-// formulaireContainer.addEventListener("submit",send);
-// // localStorage.clear();
-// alert("quoi ?");
-// // let objCommande = {
-// //     idCommande : response.orderId,    
-// //     prixTotal : totalPanier          
-// // }
-// // alert("comment ?");
-
-// // console.log(objCommande);
-// // alert("ca va ou quoi ?");
-// // let commandebis = JSON.stringify(objCommande);
-
-//     // location.assign ("confirm.html");        
-//     // localStorage.setItem("confirmation", commandebis);
-    
-//     // alert("oh");
-//     // localStorage.setItem("InfoClient", client2);
-
-// })      
-
-// .catch (function(e){
-// alert("probleme de connexion");
-// })   
-// // // localStorage.clear();
-
-
-
-
-
-
-
-
-
-//     alert("bisous");
-
-        
-
-       
-       
-//       
-//         console.log(client);
-//         alert(nom.value );
-
-
-//         let essai =  document.getElementById("testessai");
-//         essai.innerHTML = "coucou";
-    
-// fetch('http://localhost:3000/api/cameras/order', {
-// method: 'POST',    
-// headers : {
-//     'accept' : 'application/json', 
-//     'Content-type' : 'application/json'
-// },
-// body : JSON.stringify(client)  
-
-// })
-// // pour voir le résultat du serveur dans la console
-
-// .then(response =>response.json())     
-
-// .then(response => {
-// // localStorage.clear();
-// alert("quoi ?");
-// let objCommande = {
-//     idCommande : response.orderId,    
-//     prixTotal : totalPanier          
-// }
-// alert("comment ?");
-
-// // console.log(objCommande);
-// // alert("ca va ou quoi ?");
-// let commandebis = JSON.stringify(objCommande);
-
-//     // location.assign ("confirm.html");        
-//     localStorage.setItem("confirmation", commandebis);
-    
-//     // alert("oh");
-//     // localStorage.setItem("InfoClient", client2);
-
-// })      
-
-// .catch (function(e){
-// alert("probleme de connexion");
-// })   
-// // localStorage.clear();
-
-
-
-
-// }
-
-
-
-// function fonctionvalid(e){
-// if(nom.validity.valueMissing){
-//     e.preventDefault();
-//     nom_m.textContent = 'Merci de compléter ce champs';
-//     nom_m.style.color = 'red';
-// }
-
-// if(prenom.validity.valueMissing){
-//     e.preventDefault();
-//     prenom_m.textContent = 'Merci de compléter ce champs';
-//     prenom_m.style.color = 'red';
-// }
-// if(adresse.validity.valueMissing){
-//     e.preventDefault();
-//     adresse_m.textContent = 'Merci de compléter ce champs';
-//     adresse_m.style.color = 'red';
-// }
-// if(ville.validity.valueMissing){
-//     e.preventDefault();
-//     ville_m.textContent = 'Merci de compléter ce champs';
-//     ville_m.style.color = 'red';
-// }
-
-// if(email.validity.valueMissing){
-//     e.preventDefault();
-//     email_m.textContent = 'Merci de compléter ce champs';
-//     email_m.style.color = 'red';
-// }    
-// else if(nom_v.test(nom.value)==false){
-//     e.preventDefault();
-//     nom_m.textContent = 'Format incorrect';
-//     nom_m.style.color = 'orange';
-// }
-// else if (nom_v.test(prenom.value)==false){
-//     e.preventDefault();
-//     prenom_m.textContent = 'Format incorrect';
-//     prenom_m.style.color = 'orange';
-// }
-// else if (mail_v.test(email.value)==false){
-//     e.preventDefault();
-//     email_m.textContent = 'Format incorrect';
-//     email_m.style.color = 'orange';
-// }
-
-// else{   
-//     class Client {
-//         constructor(firstName, lastName, address, city, email) {
-//         (this.firstName = firstName),
-//         (this.lastName = lastName),
-//         (this.address = address),
-//         (this.city = city),
-//         (this.email = email)     
-//         }
-//     }
-    
-//     let bise = new Client(nom.value,prenom.value,adresse.value,ville.value,email.value);
-// console.log(bise);
-
-//     alert("he ben!")
-
-
-// e.preventDefault();
-
-//     let client = {
-        
-//         contact : { 
-//         firstName :  nom.value,
-//         lastName: prenom.value,
-//         adress :adresse.value,
-//         city : ville.value,
-//         email :email.value
-//     },
-//         products : ProductId 
-//     };
-//     console.log(client);
-//     alert(nom.value );
-
-    
-    
-// fetch('http://localhost:3000/api/cameras/order', {
-// method: 'POST',    
-// headers : {
-    
-//     'Content-type' : 'application/json'
-// },
-// body : JSON.stringify(client)  
-
-// })
-// // pour voir le résultat du serveur dans la console
-
-// .then(response =>response.json())     
-
-// .then(response => {
-// // localStorage.clear();
-// alert("quoi ?");
-// let objCommande = {
-//     idCommande : response.orderId,    
-//     prixTotal : totalPanier          
-// }
-// alert("comment ?");
-
-// // console.log(objCommande);
-// // alert("ca va ou quoi ?");
-// let commandebis = JSON.stringify(objCommande);
-
-//     // location.assign ("confirm.html");        
-//     localStorage.setItem("confirmation", commandebis);
-    
-//     // alert("oh");
-//     // localStorage.setItem("InfoClient", client2);
-
-// })      
-
-// .catch (function(e){
-// alert("probleme de connexion");
-// })   
-// // localStorage.clear();
-
-// }
-
-// }
-
-     
