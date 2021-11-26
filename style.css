@@ -6,6 +6,7 @@ body{
 }
 header{
     width: 95%;
+    /* position:fixed; */
     display: flex;
     flex-direction: row;   
     color : black;  
@@ -14,6 +15,7 @@ header{
 }
 .description{
     height: 100px;
+    min-width: 250px;
     font-size: 1.5rem;
 }
 section{
@@ -22,6 +24,7 @@ section{
 }
 .photo{  
     width: 300px;
+    min-width: 239px;
     height: auto;
     margin: auto;
     padding: 3%;
@@ -75,6 +78,7 @@ section{
     display: flex;
     border: 1px whitesmoke solid;
     margin : 15px; 
+    min-width: 300px;
 }
 .nomCamera{
     padding-top: 15px;
@@ -94,7 +98,7 @@ section{
 /*fin page produit*/
 
 .panier{
-    width : 40%; 
+    width : 24%; 
     font-size: 1.5rem;
     margin: auto;    
     justify-content: space-between;  
@@ -131,6 +135,7 @@ section{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    min-width: 300px;
 }
 
 #containerCam{
@@ -145,6 +150,7 @@ section{
     text-align: center;
     display : flex;    
     border : 1px solid black;
+    margin-top: 15px;
 }
 .descriptionCamera{
 width: 44%;
@@ -281,6 +287,7 @@ footer{
 }
 .containerRecapPanier{
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     padding: 2px;
@@ -317,18 +324,21 @@ footer{
 
 #containerTotalPanier{
     width: 30%;
-    border: 1px solid black;
+    border: 3px solid rgb(63, 60, 60);
     margin-left: auto;
-    border-radius: 10px;
     background-color:whitesmoke;
     margin-bottom: 20px;
     margin-right: 10px;
+    padding: 5px;
 }
 
 #TotalPanier{
 margin-bottom: 30px;
 font-size: 1.5rem;
+padding: 3px;
 font-weight: 900;
+border:  1px solid black;
+
 }
 /*Panier Total*/
 
@@ -354,7 +364,7 @@ font-weight: 900;
     width: 100%;
     margin-bottom: 20px;
     padding: 5px;
-    border : 1px solid black;
+   
 }
 
 #Articlebis2{
@@ -479,7 +489,7 @@ font-weight: 900;
 #form{
     width : 95%;   
     margin-top: 20px;
-    background-color: rgb(180, 180, 180);
+    background-color: black;
     padding: 5px;
 }
 .formContact{
@@ -488,6 +498,7 @@ font-weight: 900;
     margin-top : 10px;
     font-size: 1.5rem;
     font-weight: 800;
+    color: white;
     }
 
 .nomPrenom{
@@ -519,6 +530,7 @@ label{
 }
 .merci{
     margin-bottom: 10px;
+    color: white;
 }
 
 /*------------------------- panier html fin-----------------*/
@@ -539,6 +551,10 @@ header{
     flex-wrap: wrap;
     width : 100%;
 }
+.panier{
+    width :84%;
+    margin-bottom: 10px;
+}
 
  #lienProduit{
    max-width: 230px; 
@@ -550,8 +566,9 @@ header{
     
 }
 
-.photo{
-    max-width: 200px;
+.photo{  
+    width: 150px;
+    min-width: 200px;
     margin : 8px;
 }
 #containerCam2{
@@ -562,9 +579,12 @@ header{
     margin-bottom: 20px;
 }
 #photoPro{
-    width : 100px;
+    width: 95%;
     height : 144px;
     object-fit: cover;
+    margin: auto;
+    padding: 0;
+    border : 1px solid white;
 }
 #choixSelection{
     width: 120px;
@@ -581,13 +601,15 @@ flex-wrap: wrap;
 margin: auto;
 }
 #containerRecap1{
-    width: 1080px;
+    
     margin-bottom: 30px;
+    min-width: 283px;
 }
 #containerTotalPanier{
-    width : 50%;
+    width : 80%;
     margin: auto;
     height: 260px;
+    margin-bottom: 25px;
     
 }
 #photocaddie{
@@ -602,20 +624,90 @@ margin: auto;
     flex-wrap: wrap;
     width: 90%;
     height: auto;
-    margin: auto
+    margin: auto;
+    margin-bottom: 20px;
     /* max-width: 370px; */
+}
+.article{
+    width: 100%;
+}
+.nomCamera{
+    font-size: 1.1rem;
+    color : white;
+}
+.prixCamera{
+    font-size: 1.3rem;
+    color: white;
 }
 .information{
     max-width : 274px;
     margin: auto;
     height: auto;
+    background-color: black;
 }
 .barreRecherche{
 width: 90%;
+text-align: center;
 }
 .classLogo{
-    width:80%;
+    width:90%;
     margin: auto;
+    text-align: center;
+}
+#containerProduct{
+    width : 100%;
+display: flex;
+flex-wrap: wrap;
+}
+.descriptionCamera{
+    display: flex;
+    width : 95%;
+    flex-wrap: wrap;
+    margin : auto ;
+    padding :0 ;
+    border : 1px solid white;
+    text-align: center;
+}
+#photosProduct{
+    display: flex;
+}
+#nomDeLaCamera{
+    margin: auto;
+    text-align: center;
+}
+#option{
+    text-align: center;
+    margin: auto;
+
+}
+#prix{
+    margin: auto;
+}
+.commandecam{
+    margin: auto;
+}
+#logoconfirm{
+    margin: auto;
+    text-align: center;
+}
+.containerRecapPanier{
+   margin-bottom: 15px;
+    min-width: 80px;
+}
+.optionCamPanier{
+    display :none;
+}
+
+#firstName2,#lastName2,#adress2,#city2,#email2{
+    width: 100%;
+    min-width : 120px;
+}
+.form_detail{
+    display: flex;
+    flex-wrap: wrap;
+}
+#boutonsub{
+    font-size: 0.9rem;
 }
 
 }

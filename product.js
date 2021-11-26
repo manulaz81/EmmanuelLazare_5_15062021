@@ -18,8 +18,7 @@ console.log(id);
 
 fetch('http://localhost:3000/api/cameras/'+ id )
 .then((res) => res.json())
-.then((data) => {
-  {    
+.then((data) => {{    
     // recuperation de l'image
     let imageCam = document.createElement("img");   
     imageCam.id= "photoPro";
@@ -55,13 +54,12 @@ fetch('http://localhost:3000/api/cameras/'+ id )
     selectchoix.innerHTML = "choisir options";
     lenseCam5.appendChild(selectchoix);     
                     
-    for(let i in data.lenses)
-      {   
+    for(let i in data.lenses){   
         let lenseCam = document.createElement("option");            
         lenseCam.innerHTML = data.lenses[i];
         lenseCam5.appendChild(lenseCam);
         lenseCam.id = "optionSelectionnee";
-      };                
+    };                
         
     // essai pour changer le nom de la camera
     let testnom = document.getElementById('choixSelection');
@@ -108,18 +106,14 @@ fetch('http://localhost:3000/api/cameras/'+ id )
 
     // pour ajouter au panier         
     bouton.addEventListener('click',changeTexte);
-    function changeTexte()
-    {             
+    function changeTexte(){             
       if (testnom.value==="choisir options")
       alert ("vous devez obligatoirement choisir une option");       
       else if (quantiteCam.value<1)
-      alert ("saisie impossible car votre quantité est négative ou nulle")
-      else
-      {                 
-
+      alert ("saisie impossible car votre quantité est négative ou nulle! Merci de saisir une quantité positive!")
+      else{               
         // création d'une variable qui contient les valeurs du produit selectionné
-        let produitSelect = 
-        {
+        let produitSelect={
           id : id ,
           photoPanier : data.imageUrl,
           nom : data.name ,
@@ -139,83 +133,60 @@ fetch('http://localhost:3000/api/cameras/'+ id )
         // Json.parse c'est pour convertir les donnée au format json qui sont dans le local storage en objet javascript
         
         // création d'une variable qui permet de dire que l'objet a été ajouté
-        const popupConfirmation = ()=>
-        {
-          if(alert("la caméra"+" "+ (data.name) + " "+ 'a bien été ajouté dans votre panier'))
-          {
+        const popupConfirmation = ()=>{
+          if(alert("la caméra"+" "+ (data.name) + " "+ 'a bien été ajouté dans votre panier')){
             ;
           }
-          else
-          {
+          else{
             window.location.href = "index.html";
           }
         }
           
           //  si il y un produit avec id identique dans le localStorage
-        function produitPush()
-          {   
-            if(produitDansLocalStorage)
-              {
-               alert("il y a un produit dans le localstorage, vérifier maintenant id");
+        function produitPush(){   
+             // je verifie si id est dans le localStorage  
+            if(produitDansLocalStorage){               
+              // j'enferme tout les id dans un tableau
                 let tableauId = [];
                 for (let d=0; d<produitDansLocalStorage.length; d++)
                   {let idregrouper = produitDansLocalStorage[d].id;
                     tableauId.push(idregrouper);
                   }
-                  console.log(tableauId);
-                  console.log(tableauId.indexOf(id));
-
+                
+               // je verifie si l'id est dans le tableau avec la methode IndexOf
                 if(tableauId.indexOf(id)>=0){
                     console.log(produitSelect.id);
-                    alert("produit déja dans le localstorage");
-
+                    
                     // rajouter la quantite dans le produit contenant cet id                
 
-                    //rechercher l'id selectionner dans le tableau du local storage
+                    //je cible l'élément avec l'id avec la methode find
                     const found = produitDansLocalStorage.find(element=>element = id);
                     console.log(found);
 
                     // je modifie la quantité dans la const
                     found.quantite = quantiteCam.value;
-
-
-                    alert("recherche id dans le tableau fait !!");
-                    // produitDansLocalStorage.push(produitSelect);
                     localStorage.setItem("produitphoto", JSON.stringify(produitDansLocalStorage));
                     popupConfirmation(); 
-                    }
+                }
                 else{  
-                    alert("produit sans même id");                
-                    produitDansLocalStorage.push(produitSelect);
-                    alert("stop it bizarre");
+                   // si ce n'est pas le même Id           
+                    produitDansLocalStorage.push(produitSelect);                  
                     localStorage.setItem("produitphoto", JSON.stringify(produitDansLocalStorage));
                     popupConfirmation(); 
-                    }
-
-              }
+                }
+            }
             else{
                   produitDansLocalStorage = [];
                   produitDansLocalStorage.push(produitSelect);
                   localStorage.setItem("produitphoto", JSON.stringify(produitDansLocalStorage));
                   popupConfirmation();               
-                }
-          }
+            }
+        }
           
-          produitPush(); 
-      
-      
-      
-          };
-    
-              
-            }   
-            
-            
-          } 
-        })     
+        produitPush();    
+      };
+    }     
+} 
+})     
         
-        .catch(error =>  error) ;       
-
-        
-
-        
+.catch(error =>  error) ;       

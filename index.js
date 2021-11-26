@@ -1,5 +1,3 @@
-
-
 let boutonPanier=  document.getElementById("boutonPanier");
 let containerPhoto = document.getElementById("Photo");
 let containerCam = document.getElementById("containerCam2");  
@@ -57,7 +55,6 @@ fetch("http://localhost:3000/api/cameras")
             priceCam.style.fontWeight = "600";
             priceCam.style.marginTop = " 15px";
             div1.appendChild(priceCam);            
-            }
-            
+            }            
         })
  .catch(error => console.log(error))     
