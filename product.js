@@ -14,7 +14,6 @@ const urlid = window.location.search;
 
 //Methode 1 pour extraire juste l'id
 const id = urlid.slice(11);
-console.log(id);
 
 fetch('http://localhost:3000/api/cameras/'+ id )
 .then((res) => res.json())
@@ -128,7 +127,7 @@ fetch('http://localhost:3000/api/cameras/'+ id )
         // déclaration de la variable "produitEnregisterDanslelocalStorage"
                 
         let produitDansLocalStorage = JSON.parse(localStorage.getItem("produitphoto"));
-        console.log(produitDansLocalStorage);
+      
                                   
         // Json.parse c'est pour convertir les donnée au format json qui sont dans le local storage en objet javascript
         
@@ -154,14 +153,12 @@ fetch('http://localhost:3000/api/cameras/'+ id )
                   }
                 
                // je verifie si l'id est dans le tableau avec la methode IndexOf
-                if(tableauId.indexOf(id)>=0){
-                    console.log(produitSelect.id);
+                if(tableauId.indexOf(id)>=0){                  
                     
                     // rajouter la quantite dans le produit contenant cet id                
 
                     //je cible l'élément avec l'id avec la methode find
-                    const found = produitDansLocalStorage.find(element=>element = id);
-                    console.log(found);
+                    const found = produitDansLocalStorage.find(element=>element = id);                   
 
                     // je modifie la quantité dans la const
                     found.quantite = quantiteCam.value;

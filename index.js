@@ -56,4 +56,4 @@ fetch("http://localhost:3000/api/cameras")
             div1.appendChild(priceCam);            
             }            
         })
- .catch(error => console.log(error))     
+ .catch(error => error )  

@@ -15,7 +15,6 @@ if(produitDansLocalStorage2 === null){
     `
 positionElement.innerHTML = panierVide;
 let formulairevide = `Merci de retourner au menu si vous souhaitez commander !`
-console.log(formulairevide);
 let formulaireNonvisible = document.getElementById("form");
 formulaireNonvisible.innerHTML = formulairevide ;
 }
@@ -104,16 +103,13 @@ else {
     for (let b =0 ; b <boutonSupp.length; b++){
                 boutonSupp[b].addEventListener("click", (event)=>{
                     event.preventDefault();
-                console.log(event);
                                 
              // selection de l'id du produit qui va être supprimer en cliquant sur le bouton
 
-             let idSelectSupprime = produitDansLocalStorage2[b].id ;
-             console.log(idSelectSupprime);                
+             let idSelectSupprime = produitDansLocalStorage2[b].id ;             
              
              // avec la methode filter je selectionn les element a garder et supprime l'élemnt où le btn suppr a été cliqué
               produitDansLocalStorage2 = produitDansLocalStorage2.filter(el =>el.id !== idSelectSupprime);
-            //   console.log(produitDansLocalStorage2);
              
              // envoi la valeur dans le localstorage
               localStorage.setItem("produitphoto",JSON.stringify(produitDansLocalStorage2));            
@@ -288,6 +284,6 @@ fetch('http://localhost:3000/api/cameras/order', {
       localStorage.setItem('commande', commande);
       window.location = 'confirm.html';
 })
-.catch(error => console.log(error))   
+.catch(error => (error))   
 }
 
